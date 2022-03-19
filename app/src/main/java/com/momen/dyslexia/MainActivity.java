@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar-JO");
-                intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, "com.example.babytest");
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar-EG");
+                intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, "com.momen.dyslexia");
                 //   intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 20000); // value to wait
 
                 intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);  // 1 is the maximum number of results to be returned.
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
                 } catch (Exception e) {
                     Toast
-                            .makeText(MainActivity.this, " " + e.getMessage(),
+                            .makeText(MainActivity.this, "" + e.getMessage(),
                                     Toast.LENGTH_SHORT)
                             .show();
                 }

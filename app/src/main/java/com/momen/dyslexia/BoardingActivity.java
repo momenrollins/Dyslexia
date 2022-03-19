@@ -47,7 +47,7 @@ public class BoardingActivity extends AppCompatActivity {
                 if (onboardingViewPager.getCurrentItem() + 1 < onboardingAdapter.getItemCount()) {
                     onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem() + 1);
                 } else {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), CategoriesActivity.class));
                     finish();
                 }
             }

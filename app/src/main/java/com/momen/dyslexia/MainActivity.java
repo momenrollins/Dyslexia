@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar-JO");
@@ -54,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Toast
                             .makeText(MainActivity.this, " " + e.getMessage(),
                                     Toast.LENGTH_SHORT)
@@ -69,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
-                                    @Nullable Intent data)
-    {
+                                    @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_SPEECH_INPUT) {
             if (resultCode == RESULT_OK && data != null) {
@@ -81,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 
 }

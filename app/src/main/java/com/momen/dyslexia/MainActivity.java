@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         iv_mic = findViewById(R.id.btn_speak);
         mText = findViewById(R.id.textView1);
 
-
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

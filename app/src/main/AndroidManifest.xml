@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dyslexia">
         <activity
+            android:name=".Level1Activity"
+            android:exported="false" />
+        <activity
             android:name=".BoardingActivity"
             android:exported="true">
             <intent-filter>
@@ -22,7 +25,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

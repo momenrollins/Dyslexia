@@ -11,19 +11,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.AdapterViewHolder> {
-    OnItemClickListener mListener;
-    ArrayList<CategoriesItem>categoriesItems;
-
-    public CategoriesAdapter(ArrayList<CategoriesItem> categoriesItems) {
+    public CategoriesAdapter(OnItemClickListener mListener, ArrayList<CategoriesItem> categoriesItems) {
+        this.mListener = mListener;
         this.categoriesItems = categoriesItems;
     }
 
+    OnItemClickListener mListener;
+    ArrayList<CategoriesItem>categoriesItems;
+
+
+
     public interface OnItemClickListener {
         void onItemClick(int position);
+
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
+
     }
 
     @NonNull
@@ -57,6 +62,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ad
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION)
                             listener.onItemClick(position);
+
                     }
                 }
             });

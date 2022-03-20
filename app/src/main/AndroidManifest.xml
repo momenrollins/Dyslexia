@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dyslexia">
         <activity
+            android:name=".Level1Activity"
+            android:exported="false" />
+        <activity
             android:name=".PDFActivity"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
     </application>
 
 </manifest>

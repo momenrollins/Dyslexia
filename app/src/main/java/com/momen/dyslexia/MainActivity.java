@@ -29,14 +29,20 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mText;
     private ImageView iv_mic;
+    private ImageView iv_word;
     private static final int REQUEST_CODE_SPEECH_INPUT = 1;
+    int[] images = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f};
+    String[] letters = {"الف", "باء", "جيم", "دال", "ميم", "خاء"};
+    int index = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         iv_mic = findViewById(R.id.btn_speak);
+        iv_word = findViewById(R.id.iv_word);
         mText = findViewById(R.id.textView1);
+        iv_word.setImageResource(images[index]);
 
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
                 } catch (Exception e) {
-                    Toast
-                            .makeText(MainActivity.this, "" + e.getMessage(),
-                                    Toast.LENGTH_SHORT)
-                            .show();
+
                 }
             }
         });
@@ -72,14 +75,31 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK && data != null) {
                 ArrayList<String> result = data.getStringArrayListExtra(
                         RecognizerIntent.EXTRA_RESULTS);
-                mText.setText(
-                        Objects.requireNonNull(result).get(0));
+                if (Objects.requireNonNull(result).get(0).equals(letters[index])) {
+
+                    index++;
+                    if (index < letters.length) {
+                        iv_word.setImageResource(images[index]);
+                        mText.setText(
+                                "شاطر 👏");
+                    } else {
+                        index = 0;
+                        iv_word.setImageResource(images[index]);
+                        mText.setText(
+                                "جرب تانى 😊");
+                    }
+                } else {
+
+                    mText.setText(
+                            "حاول تانى 😢");
+                }
+
             }
         }
     }
 
 
     public void Go_To_Leve_1(View view) {
-        startActivity(new Intent(getApplicationContext(), Level1Activity.class));
+        // startActivity(new Intent(getApplicationContext(), Level1Activity.class));
     }
 }

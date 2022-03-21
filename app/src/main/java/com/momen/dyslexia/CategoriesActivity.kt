@@ -1,7 +1,9 @@
 package com.momen.dyslexia
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_categories.*
 
 class CategoriesActivity : AppCompatActivity() {
@@ -15,7 +17,16 @@ class CategoriesActivity : AppCompatActivity() {
         categoriesList.add(CategoriesItem(R.drawable.vector, "الاختبار القبلي للقراءة"))
         categoriesList.add(CategoriesItem(R.drawable.vector, "انشطة لعسر القراءة"))
         categoriesList.add(CategoriesItem(R.drawable.vector, "الاختبار البعدي للقراءة"))
-        categoriesAdapter = CategoriesAdapter(categoriesList)
-        cate_recycler.adapter=categoriesAdapter
+        val itemListiner = object : CategoriesAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                if (position == 0)
+                    startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
+            }
+
+        }
+        categoriesAdapter = CategoriesAdapter(itemListiner, categoriesList)
+        cate_recycler.adapter = categoriesAdapter
+
+
     }
 }

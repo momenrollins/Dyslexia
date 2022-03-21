@@ -79,4 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void Go_To_Leve_1(View view) {
+        startActivity(new Intent(getApplicationContext(), Level1Activity.class));
+    }
 }

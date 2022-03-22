@@ -1,25 +1,19 @@
 package com.momen.dyslexia;
 
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
-import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -28,12 +22,18 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mText;
+    private TextView mText2;
     private ImageView iv_mic;
     private ImageView iv_word;
+
     private static final int REQUEST_CODE_SPEECH_INPUT = 1;
     int[] images = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f};
     String[] letters = {"الف", "باء", "جيم", "دال", "ميم", "خاء"};
+    ArrayList<String> wrongLetters = new ArrayList();
+    ArrayList<String> rightLetters = new ArrayList();
+
     int index = 0;
+    private Button result;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         iv_mic = findViewById(R.id.btn_speak);
         iv_word = findViewById(R.id.iv_word);
         mText = findViewById(R.id.textView1);
+        mText2 = findViewById(R.id.textView2);
         iv_word.setImageResource(images[index]);
+        result = (Button) findViewById(R.id.result);
 
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +66,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                result();
+            }
+        });
+
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     @Nullable Intent data) {
@@ -75,23 +85,28 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK && data != null) {
                 ArrayList<String> result = data.getStringArrayListExtra(
                         RecognizerIntent.EXTRA_RESULTS);
+                Log.d("TAG", "onActivityResult:iii index  " + index);
                 if (Objects.requireNonNull(result).get(0).equals(letters[index])) {
-
+                    mText.setText(
+                            "شاطر 👏");
+                    if (!wrongLetters.contains(letters[index]))
+                        rightLetters.add(letters[index]);
                     index++;
                     if (index < letters.length) {
                         iv_word.setImageResource(images[index]);
-                        mText.setText(
-                                "شاطر 👏");
+
                     } else {
                         index = 0;
                         iv_word.setImageResource(images[index]);
-                        mText.setText(
-                                "جرب تانى 😊");
+                        result();
+
                     }
                 } else {
 
                     mText.setText(
                             "حاول تانى 😢");
+                    wrongLetters.add(letters[index]);
+
                 }
 
             }
@@ -99,7 +114,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void Go_To_Leve_1(View view) {
-        // startActivity(new Intent(getApplicationContext(), Level1Activity.class));
+    public void result() {
+
+        Log.d("TAG", "result:index  " + index);
+
+
+        if (rightLetters.size() > wrongLetters.size())
+            mText.setText(
+                    "شاطر 👏");
+        else mText.setText(
+                "حاول تانى 😢");
+
+
+        if (rightLetters.size() != 0) {
+            mText.append("\n النتيجة : " + rightLetters.size() + " من " + letters.length + "\n الكلمات الصحيحة : ");
+
+            for (int x = 0; x < rightLetters.size(); x++) {
+                mText.append(rightLetters.get(x) + ",");
+
+            }
+        }
+        if (wrongLetters.size() != 0) {
+            mText2.append(" الكلمات الخاطئة : \n ");
+            for (int x = 0; x < wrongLetters.size(); x++) {
+                mText2.append(wrongLetters.get(x) + ",");
+
+            }
+        }
+        rightLetters.clear();
+        wrongLetters.clear();
+
+
     }
+
+    public void Go_To_Leve_1(View view) {
+
+        index++;
+        if (index < letters.length) {
+            iv_word.setImageResource(images[index]);
+        } else {
+                mText.setText("");
+                mText2.setText("");
+                rightLetters.clear();
+                wrongLetters.clear();
+                index=0;
+            iv_word.setImageResource(images[index]);
+
+
+
+        }
+
+
+    }
+
+
 }

@@ -21,6 +21,9 @@ class CategoriesActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 if (position == 0)
                     startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
+        //        else if(position == 1)
+          //          startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
+
                 else if(position==1)
                     startActivity(Intent(this@CategoriesActivity, Level1Activity::class.java))
             }

@@ -77,15 +77,15 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:layout_marginTop="50dp"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:onClick="Go_To_Leve_1"
-                android:backgroundTint="#3D099A"
-                android:text="التالي" />
+                android:backgroundTint="#0876CD"
+                android:text="التالى " />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/result"
+                android:visibility="invisible"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:layout_weight="1"

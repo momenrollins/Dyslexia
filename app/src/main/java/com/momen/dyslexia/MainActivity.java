@@ -178,11 +178,14 @@ public class MainActivity extends AppCompatActivity {
         Log.d("TAG", "result:index  " + index);
 
 
-        if (rightLetters.size() > wrongLetters.size())
+        /*if (rightLetters.size() > wrongLetters.size())
             mText.setText(
                     "شاطر 👏");
-        else mText.setText(
-                "حاول تانى 😢");
+        else
+            mText.setText(
+                "حاول تانى 😢");*/
+            mText.setText(
+                "");
 
 
         if (rightLetters.size() != 0) {

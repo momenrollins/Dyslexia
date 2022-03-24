@@ -73,16 +73,17 @@
             android:orientation="horizontal"
             android:padding="15dp">
             <Button
+                android:id="@+id/next"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="Go_To_Leve_1"
                 android:backgroundTint="#0876CD"
                 android:text="التالى " />
 
             <Button
+                android:visibility="invisible"
                 android:id="@+id/result"
                 android:layout_margin="10dp"
                 android:layout_weight="1"

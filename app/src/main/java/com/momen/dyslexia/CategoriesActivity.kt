@@ -25,7 +25,7 @@ class CategoriesActivity : AppCompatActivity() {
           //          startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
 
                 else if(position==1)
-                    startActivity(Intent(this@CategoriesActivity, Level1Activity::class.java))
+                    startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
             }
 
         }

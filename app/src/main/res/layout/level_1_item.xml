@@ -27,16 +27,17 @@
     <TextView
         android:id="@+id/first_word"
         android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18sp"    android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="خر" />
+        android:text="خر"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/iv_word"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:src="@drawable/vector" />
 
     <TextView
@@ -51,5 +52,4 @@
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
-
 </LinearLayout>

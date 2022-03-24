@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ما اسم هذا الحرف؟"
+        android:text="ما نطق هذا الحرف؟"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -70,27 +70,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="15dp">
-            <Button
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="10dp">
+            <com.google.android.material.button.MaterialButton
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:onClick="Go_To_Leve_1"
-                android:backgroundTint="#0876CD"
-                android:text="التالى " />
+                android:backgroundTint="#3D099A"
+                android:text="التالي" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/result"
                 android:layout_margin="10dp"
+                android:textSize="20sp"
                 android:layout_weight="1"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#0876CD"
-                android:text="النتيجة " />
+                android:backgroundTint="#0839CD"
+                android:text="النتيجة" />
         </LinearLayout>
 
     </LinearLayout>

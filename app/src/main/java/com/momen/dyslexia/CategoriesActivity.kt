@@ -13,21 +13,17 @@ class CategoriesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
         cate_recycler.setHasFixedSize(true)
-        categoriesList.add(CategoriesItem(R.drawable.vector, "نبذة عن صعوبات التعلم"))
-        categoriesList.add(CategoriesItem(R.drawable.vector, "الاختبار القبلي للقراءة"))
-        categoriesList.add(CategoriesItem(R.drawable.vector, "انشطة لعسر القراءة"))
-        categoriesList.add(CategoriesItem(R.drawable.vector, "الاختبار البعدي للقراءة"))
-        val itemListiner = object : CategoriesAdapter.OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                if (position == 0)
-                    startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
-        //        else if(position == 1)
-          //          startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
-
-                else if(position==1)
-                    startActivity(Intent(this@CategoriesActivity, Level1Activity::class.java))
-            }
-
+        categoriesList.add(CategoriesItem(R.drawable.hard, "نبذة عن صعوبات التعلم"))
+        categoriesList.add(CategoriesItem(R.drawable.reading, "الاختبار القبلي للقراءة"))
+        categoriesList.add(CategoriesItem(R.drawable.activites, "انشطة لعسر القراءة"))
+        categoriesList.add(CategoriesItem(R.drawable.exam, "الاختبار البعدي للقراءة"))
+        val itemListiner = CategoriesAdapter.OnItemClickListener { position ->
+            if (position == 0)
+                startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
+            else if (position == 2)
+                startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
+            else if (position == 1)
+                startActivity(Intent(this@CategoriesActivity, Level1Activity::class.java))
         }
         categoriesAdapter = CategoriesAdapter(itemListiner, categoriesList)
         cate_recycler.adapter = categoriesAdapter

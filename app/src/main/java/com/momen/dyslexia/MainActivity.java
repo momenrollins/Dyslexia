@@ -118,16 +118,19 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("TAG", "result:index  " + index);
 
+/*
 
         if (rightLetters.size() > wrongLetters.size())
             mText.setText(
                     "شاطر 👏");
         else mText.setText(
                 "حاول تانى 😢");
-
+*/
+        mText.setText("");
 
         if (rightLetters.size() != 0) {
-            mText.append("\n النتيجة : " + rightLetters.size() + " من " + letters.length + "\n الكلمات الصحيحة : ");
+            mText.append("النتيجة : " + rightLetters.size() + " من " + letters.length +
+                    "\n الكلمات الصحيحة : \n");
 
             for (int x = 0; x < rightLetters.size(); x++) {
                 mText.append(rightLetters.get(x) + ",");
@@ -143,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }
         rightLetters.clear();
         wrongLetters.clear();
-
-
     }
 
     public void Go_To_Leve_1(View view) {
@@ -153,13 +154,12 @@ public class MainActivity extends AppCompatActivity {
         if (index < letters.length) {
             iv_word.setImageResource(images[index]);
         } else {
-                mText.setText("");
-                mText2.setText("");
-                rightLetters.clear();
-                wrongLetters.clear();
-                index=0;
+            mText.setText("");
+            mText2.setText("");
+            rightLetters.clear();
+            wrongLetters.clear();
+            index = 0;
             iv_word.setImageResource(images[index]);
-
 
 
         }

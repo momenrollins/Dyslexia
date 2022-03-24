@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
-     SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
     int index = 0;
-    private Button result,next;
+    private Button result, next;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         result = (Button) findViewById(R.id.result);
         next = (Button) findViewById(R.id.next);
 
-        sharedPreferences=getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         iv_mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,31 +94,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 index++;
-                Log.d("TAG", "onClick:uuu lenth "+letters.length);
+                Log.d("TAG", "onClick:uuu lenth " + letters.length);
 
                 if (index < letters.length) {
-                    Log.d("TAG", "onClick:uuu lenth "+index);
+                    Log.d("TAG", "onClick:uuu lenth " + index);
 
                     mText.setText("");
                     mText2.setText("");
                     iv_word.setImageResource(images[index]);
                 } else {
 
-                    Log.d("TAG", "onClick:uuu "+index);
-                  if (wrongLetters.isEmpty() && rightLetters.isEmpty()) {
-                      Log.d("TAG", "onClick:uuu in"+index);
+                    Log.d("TAG", "onClick:uuu " + index);
+                    if (wrongLetters.isEmpty() && rightLetters.isEmpty()) {
+                        Log.d("TAG", "onClick:uuu in" + index);
 
-                      index = 0;
-                      iv_word.setImageResource(images[index]);
-                  }else {
-                      Log.d("TAG", "onClick:uuu out "+index);
+                        index = 0;
+                        iv_word.setImageResource(images[index]);
+                    } else {
+                        Log.d("TAG", "onClick:uuu out " + index);
 
-                      mText.setText("");
-                      mText2.setText("");
-                      next.setVisibility(View.INVISIBLE);
-                      result.setVisibility(View.VISIBLE);
+                        mText.setText("");
+                        mText2.setText("");
+                        next.setVisibility(View.INVISIBLE);
+                        result.setVisibility(View.VISIBLE);
 
-                  }
+                    }
 
 
                 }
@@ -163,7 +163,8 @@ public class MainActivity extends AppCompatActivity {
 
                     mText.setText(
                             "حاول تانى 😢");
-                    wrongLetters.add(letters[index]);
+                    if (!wrongLetters.contains(letters[index]) && !wrongLetters.contains(letters2[index]))
+                        wrongLetters.add(letters[index]);
 
                 }
 
@@ -212,8 +213,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
 }

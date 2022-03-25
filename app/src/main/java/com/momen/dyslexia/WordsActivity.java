@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class WordsActivity extends AppCompatActivity {
@@ -32,6 +33,8 @@ public class WordsActivity extends AppCompatActivity {
     String[] listWords = {"ديك", "شجرة", "قطة", "تاج", "أرنب", "كرسي", "أسد", "شباك", "نجمة"};
     int[] images = {R.drawable.deek, R.drawable.tree, R.drawable.cat, R.drawable.crown, R.drawable.rabbit, R.drawable.chair,
             R.drawable.lion,R.drawable.window, R.drawable.star};
+    ArrayList<String> wrongLetters = new ArrayList();
+    ArrayList<String> rightLetters = new ArrayList();
     int index = 0;
     private EditText letter14;
     private TextView result;
@@ -50,31 +53,38 @@ public class WordsActivity extends AppCompatActivity {
                 if (listWords[index].length() == 3) {
                     Log.d("TAG", "onClick: " + letter14.getText().toString() + letter12.getText().toString() + letter11.getText().toString());
                     String _result = letter14.getText().toString() + letter12.getText().toString() + letter11.getText().toString();
+
                     if (_result.equals(listWords[index])) {
 
-                        if (index < listWords.length) {
-                            index = index + 1;
-                        } else index = 0;
-                        splitT3Letters();
+
+                        rightLetters.add(listWords[index]);
+
 
                     } else {
-                        result.setText("حاول تانى");
+                        wrongLetters.add(listWords[index]);
 
                     }
+                    index = index + 1;
+
+                    splitT3Letters();
+
                 } else {
                     String _result = letter14.getText().toString() + letter13.getText().toString() + letter12.getText().toString() + letter11.getText().toString();
 
                     if (_result.equals(listWords[index])) {
 
                         Log.d("TAG", "onClick:innn  " + index);
-                        if (index < listWords.length) {
-                            index = index + 1;
-                        } else index = 0;
-                        splitT3Letters();
+
+                        rightLetters.add(listWords[index]);
+
 
                     } else {
-                        result.setText("حاول تانى");
+                        wrongLetters.add(listWords[index]);
                     }
+                    index = index + 1;
+
+                    splitT3Letters();
+
                 }
 
 
@@ -86,40 +96,69 @@ public class WordsActivity extends AppCompatActivity {
 
     public void splitT3Letters() {
         Log.d("TAG", "splitT3Letters: " + index);
-        if (index >= listWords.length) index = 0;
+        if (index >= listWords.length){
+            index = 0;
+      /*      if (rightLetters.size() != 0) {
+                result.append("النتيجة : " + rightLetters.size() + " من " + listWords.length +
+                        "\n الكلمات الصحيحة : \n");
 
-        ivWord.setImageResource(images[index]);
+                for (int x = 0; x < rightLetters.size(); x++) {
+                    result.append(rightLetters.get(x) + ",");
 
-        Random r = new Random();
-        letter11.setText("");
-        letter12.setText("");
-        letter13.setText("");
-        letter14.setText("");
-        result.setText("");
-        String word = listWords[index];
-        if (word.length() == 3) {
-            letter3.setVisibility(View.GONE);
+                }
+            }*/
+            result.append("النتيجة : " + rightLetters.size() + " من " + listWords.length +
+                    "\n");
+            if (wrongLetters.size() != 0) {
+                result.append(" الكلمات الخاطئة : \n ");
+                for (int x = 0; x < wrongLetters.size(); x++) {
+                    result.append(wrongLetters.get(x) + ",");
+
+                }
+            }
+            nextWord.setVisibility(View.GONE);
+            letter11.setVisibility(View.GONE);
+            letter12.setVisibility(View.GONE);
             letter13.setVisibility(View.GONE);
-            letter12.addTextChangedListener(new GenericTextWatcher(letter11, letter12));
-            letter14.addTextChangedListener(new GenericTextWatcher(letter12, letter14));
+            letter14.setVisibility(View.GONE);
 
-            word = scramble(r, word);
-            letter1.setText("" + word.charAt(0));
-            letter2.setText("" + word.charAt(1));
-            letter4.setText("" + word.charAt(2));
-        } else if (word.length() == 4) {
-            letter3.setVisibility(View.VISIBLE);
-            letter13.setVisibility(View.VISIBLE);
-            letter12.addTextChangedListener(new GenericTextWatcher(letter11, letter12));
-            letter13.addTextChangedListener(new GenericTextWatcher(letter12, letter13));
-            letter14.addTextChangedListener(new GenericTextWatcher(letter13, letter14));
 
-            word = scramble(r, word);
-            letter1.setText("" + word.charAt(0));
-            letter2.setText("" + word.charAt(1));
-            letter3.setText("" + word.charAt(2));
-            letter4.setText("" + word.charAt(3));
+        }else {
+            ivWord.setImageResource(images[index]);
+
+            Random r = new Random();
+            letter11.setText("");
+            letter12.setText("");
+            letter13.setText("");
+            letter14.setText("");
+            result.setText("");
+            String word = listWords[index];
+            if (word.length() == 3) {
+                letter3.setVisibility(View.GONE);
+                letter13.setVisibility(View.GONE);
+                letter12.addTextChangedListener(new GenericTextWatcher(letter11, letter12));
+                letter14.addTextChangedListener(new GenericTextWatcher(letter12, letter14));
+
+                word = scramble(r, word);
+                letter1.setText("" + word.charAt(0));
+                letter2.setText("" + word.charAt(1));
+                letter4.setText("" + word.charAt(2));
+            } else if (word.length() == 4) {
+                letter3.setVisibility(View.VISIBLE);
+                letter13.setVisibility(View.VISIBLE);
+                letter12.addTextChangedListener(new GenericTextWatcher(letter11, letter12));
+                letter13.addTextChangedListener(new GenericTextWatcher(letter12, letter13));
+                letter14.addTextChangedListener(new GenericTextWatcher(letter13, letter14));
+
+                word = scramble(r, word);
+                letter1.setText("" + word.charAt(0));
+                letter2.setText("" + word.charAt(1));
+                letter3.setText("" + word.charAt(2));
+                letter4.setText("" + word.charAt(3));
+            }
+
         }
+
 
 
     }

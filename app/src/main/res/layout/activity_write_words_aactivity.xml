@@ -99,6 +99,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+
+            android:maxLength="1"
+
             android:text="h"
             android:textSize="25dp" />
 
@@ -109,6 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:maxLength="1"
+
 
             android:text="h"
             android:textSize="25dp" />
@@ -119,6 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:maxLength="1"
+
 
             android:text="h"
 
@@ -130,6 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:maxLength="1"
 
             android:text="h"
             android:textSize="25dp" />

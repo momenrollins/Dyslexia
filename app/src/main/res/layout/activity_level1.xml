@@ -18,6 +18,7 @@
             android:layout_weight="0.5"
             android:gravity="center"
             android:textSize="20sp"
+            android:text="degree"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
+
             tools:listitem="@layout/level_1_item" />
     </LinearLayout>
 
@@ -37,7 +39,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:text="Submit"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:icon="@drawable/ic_baseline_check_circle_outline_24" />
 </RelativeLayout>

@@ -21,6 +21,7 @@ public class Level1Activity extends AppCompatActivity {
     private TextView degree;
     ArrayList<Level_1Model> level_1ModelsList = new ArrayList<>();
     ArrayList<String> ans = new ArrayList<>();
+    String[] names = {"مسجد", "خروف", "دب", "فيل", "أرنب", "معطف", "بيت"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,8 @@ public class Level1Activity extends AppCompatActivity {
         level_1ModelsList.add(new Level_1Model(R.drawable.coat, "معطـ", ""));
         level_1ModelsList.add(new Level_1Model(R.drawable.house, "بـ", "ـت"));
         rvLevel1.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Level1Adapter(level_1ModelsList);
+        adapter = new Level1Adapter(this,level_1ModelsList);
+        adapter.names=names;
         rvLevel1.setAdapter(adapter);
         ans.add("م");
         ans.add("ف");

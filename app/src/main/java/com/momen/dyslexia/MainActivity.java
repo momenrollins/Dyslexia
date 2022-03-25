@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     String[] letters = {"الف", "باء", "تاء", "ثاء", "جيم", "حاء", "خاء", "دال", "ذال", "راء", "زاى", "سين", "شين", "صاد", "ضاد", "طاء", "ظاء", "عين", "غين", "فاء", "قاف", "كاف", "لام", "ميم", "نون", "هاء", "واو", "ياء"};
     String[] letters2 = {"الف", "به", "ته", "ثه", "جيم", "حه", "خه", "دال", "ذال", "ره", "زيه", "سين", "شين", "صاض", "ضاض", "طه", "ظه", "عين", "غين", "فه", "قف", "كاف", "لام", "ميم", "نون", "هه", "واو", "ياء"};
 
-    ArrayList<String> wrongLetters = new ArrayList();
-    ArrayList<String> rightLetters = new ArrayList();
+    ArrayList<String> wrongLetters = new ArrayList<>();
+    ArrayList<String> rightLetters = new ArrayList<>();
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 

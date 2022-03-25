@@ -34,11 +34,24 @@
         android:textColor="@color/black"
         android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/iv_word"
+    <RelativeLayout
         android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:src="@drawable/vector" />
+        android:layout_height="110dp">
+
+        <ImageView
+            android:id="@+id/iv_word"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/vector" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_baseline_volume_up_24" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_sign"

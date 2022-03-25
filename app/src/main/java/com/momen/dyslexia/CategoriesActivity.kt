@@ -24,6 +24,10 @@ class CategoriesActivity : AppCompatActivity() {
                 startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
             else if (position == 1)
                 startActivity(Intent(this@CategoriesActivity, Level1Activity::class.java))
+            else if (position == 3)
+                startActivity(Intent(this@CategoriesActivity, WordsActivity::class.java))
+
+
         }
         categoriesAdapter = CategoriesAdapter(itemListiner, categoriesList)
         cate_recycler.adapter = categoriesAdapter

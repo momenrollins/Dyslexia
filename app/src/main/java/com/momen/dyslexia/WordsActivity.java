@@ -32,7 +32,7 @@ public class WordsActivity extends AppCompatActivity {
     private Button nextWord;
     String[] listWords = {"ديك", "شجرة", "قطة", "تاج", "أرنب", "كرسي", "أسد", "شباك", "نجمة"};
     int[] images = {R.drawable.deek, R.drawable.tree, R.drawable.cat, R.drawable.crown, R.drawable.rabbit, R.drawable.chair,
-            R.drawable.lion,R.drawable.window, R.drawable.star};
+            R.drawable.lion, R.drawable.window, R.drawable.star};
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
     int index = 0;
@@ -96,7 +96,7 @@ public class WordsActivity extends AppCompatActivity {
 
     public void splitT3Letters() {
         Log.d("TAG", "splitT3Letters: " + index);
-        if (index >= listWords.length){
+        if (index >= listWords.length) {
             index = 0;
       /*      if (rightLetters.size() != 0) {
                 result.append("النتيجة : " + rightLetters.size() + " من " + listWords.length +
@@ -113,7 +113,6 @@ public class WordsActivity extends AppCompatActivity {
                 result.append(" الكلمات الخاطئة : \n ");
                 for (int x = 0; x < wrongLetters.size(); x++) {
                     result.append(wrongLetters.get(x) + ",");
-
                 }
             }
             nextWord.setVisibility(View.GONE);
@@ -123,7 +122,7 @@ public class WordsActivity extends AppCompatActivity {
             letter14.setVisibility(View.GONE);
 
 
-        }else {
+        } else {
             ivWord.setImageResource(images[index]);
 
             Random r = new Random();
@@ -158,7 +157,6 @@ public class WordsActivity extends AppCompatActivity {
             }
 
         }
-
 
 
     }

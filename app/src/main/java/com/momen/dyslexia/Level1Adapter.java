@@ -5,6 +5,7 @@ import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,6 +122,8 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                     letters.set(getAdapterPosition(), charSequence.toString());
+                    Log.d("TAG", "onClick: "+letters.get(getAdapterPosition()));
+
                 }
 
                 @Override

@@ -1,6 +1,11 @@
 package com.momen.dyslexia;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +20,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SelectLetter extends AppCompatActivity {
     private Level1Adapter adapter;
     String[] right_letters = {"ت", "ت"};
     String[] wrond_letters = {"ن", "ك"};
+    ArrayList<String> right_letters_answer =new ArrayList();
+    ArrayList<String> wrond_letters_answer= new ArrayList();
     int[] images = {R.drawable.tmr, R.drawable.trabeza};
     private RecyclerView rvSelectletter;
     private ImageView ivWord;
@@ -29,6 +38,10 @@ public class SelectLetter extends AppCompatActivity {
     private TextView l1;
     private Button lNext;
     int index = 0;
+    int counter = 0;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     ArrayList<Level_1Model> level_1ModelsList = new ArrayList<>();
     String[] names = {"مسجد", "خروف", "دب", "فيل", "أرنب", "معطف", "بيت"};
     String[] letternames = {"م", "خ", "د", "ف", "أ", "م", "ب"};
@@ -43,7 +56,25 @@ public class SelectLetter extends AppCompatActivity {
         setContentView(R.layout.activity_select_letter);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         initView();
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         ans.add("م");
         ans.add("خ");
         ans.add("د");
@@ -61,11 +92,7 @@ public class SelectLetter extends AppCompatActivity {
         rvSelectletter.setLayoutManager(new LinearLayoutManager(SelectLetter.this));
         adapter = new Level1Adapter(this, level_1ModelsList);
         adapter.names = names;
-
         rvSelectletter.setAdapter(adapter);
-
-        rvSelectletter.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Level1Adapter(this, level_1ModelsList);
         ivWord.setImageResource(images[0]);
         l1.setText(right_letters[0]);
         l2.setText(wrond_letters[0]);
@@ -74,6 +101,8 @@ public class SelectLetter extends AppCompatActivity {
         lNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                l1.setBackgroundColor(Color.WHITE);
+                l2.setBackgroundColor(Color.WHITE);
                 index++;
                 if (index == right_letters.length) {
                     txtLetter.setText("");
@@ -101,6 +130,33 @@ public class SelectLetter extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 txtLetter.setText("شاطر");
+                l1.setBackgroundColor(Color.GREEN);
+                right_letters_answer.add(right_letters[index]);
+
+                l1.setBackgroundColor(Color.WHITE);
+                l2.setBackgroundColor(Color.WHITE);
+                index++;
+                counter++;
+
+                if (index == right_letters.length) {
+                    txtLetter.setText("");
+
+                    txtLetter.setVisibility(View.VISIBLE);
+                    rvSelectletter.setVisibility(View.VISIBLE);
+                    linyer.setVisibility(View.GONE);
+                    ivWord.setVisibility(View.GONE);
+                    lNext.setVisibility(View.GONE);
+                    submitBtn.setVisibility(View.VISIBLE);
+                    for (String letter : letternames) {
+
+                        txtLetter.append(letter + "  ");
+
+                    }
+                } else {
+                    ivWord.setImageResource(images[index]);
+                    l1.setText(right_letters[index]);
+                    l2.setText(wrond_letters[index]);
+                }
 
             }
         });
@@ -108,29 +164,71 @@ public class SelectLetter extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 txtLetter.setText("خطأ");
+                wrond_letters_answer.add(right_letters[index]);
+                l1.setBackgroundColor(Color.GREEN);
+                l2.setBackgroundColor(Color.RED);
+                index++;
+
+                if (index == right_letters.length) {
+                    txtLetter.setText("");
+
+                    txtLetter.setVisibility(View.VISIBLE);
+                    rvSelectletter.setVisibility(View.VISIBLE);
+                    linyer.setVisibility(View.GONE);
+                    ivWord.setVisibility(View.GONE);
+                    lNext.setVisibility(View.GONE);
+                    submitBtn.setVisibility(View.VISIBLE);
+                    for (String letter : letternames) {
+
+                        txtLetter.append(letter + "  ");
+
+                    }
+                } else {
+                    ivWord.setImageResource(images[index]);
+                    l1.setText(right_letters[index]);
+                    l2.setText(wrond_letters[index]);
+                }
+
+
             }
+
         });
         submitBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 List<String> letters = adapter.getLetters();
-                int counter = 0;
+                Log.d("TAG", "onClick:letters  "+letters.size());
                 for (int i = 0; i < letters.size(); i++) {
+                    Log.d("TAG", "onClick:letters  "+letters.get(i));
 
                     String letter = letters.get(i);
                     if (letter == null || letter.trim().equals("")) {
+                        Log.d("TAG", "onClick:letters null "+letters.get(i));
+
                         adapter.signs.set(i, "");
                         adapter.notifyItemChanged(i);
                     } else if (letter.equals(ans.get(i))) {
+                        Log.d("TAG", "onClick:letters R "+letters.get(i));
+
                         adapter.signs.set(i, "✔");
                         adapter.notifyItemChanged(i);
                         counter++;
                     } else {
+                        Log.d("TAG", "onClick:letters F "+letters.get(i));
+
                         adapter.signs.set(i, "❌");
                         adapter.notifyItemChanged(i);
                     }
                 }
-                txtLetter.setText(counter + " / " + names.length);
+                txtLetter.setText(counter + " / " + (names.length+right_letters.length));
+                Set<String> set = new HashSet<String>();
+                Set<String> set2 = new HashSet<String>();
+                set.addAll(right_letters_answer);
+                set2.addAll(wrond_letters_answer);
+                editor.putStringSet("selectFLettersRight",set);
+                editor.putStringSet("selectFLettersWrong",set2);
+                editor.commit();
             }
         });
     }

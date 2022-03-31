@@ -54,7 +54,7 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderLevel holder, @SuppressLint("RecyclerView") int position) {
-
+        Log.d("TAG", "onClick: "+letters.get(position));
         holder.ivWord.setImageResource(level_1ModelList.get(position).image);
         holder.firstWord.setText(level_1ModelList.get(position).firstLetter);
         holder.secandWord.setText(level_1ModelList.get(position).lastLetter);
@@ -122,7 +122,7 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                     letters.set(getAdapterPosition(), charSequence.toString());
-                    Log.d("TAG", "onClick: "+letters.get(getAdapterPosition()));
+
 
                 }
 

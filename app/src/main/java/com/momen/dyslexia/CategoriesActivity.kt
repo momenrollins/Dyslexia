@@ -19,7 +19,7 @@ class CategoriesActivity : AppCompatActivity() {
         categoriesList.add(CategoriesItem(R.drawable.exam, "الاختبار البعدي للقراءة"))
         val itemListiner = CategoriesAdapter.OnItemClickListener { position ->
             if (position == 0)
-                startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
+                startActivity(Intent(this@CategoriesActivity, SelectLetter::class.java))
             else if (position == 2)
                 startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
             else if (position == 1)

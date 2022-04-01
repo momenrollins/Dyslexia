@@ -12,11 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dyslexia">
         <activity
-            android:name=".LevelsActivity"
-            android:exported="false" />
+            android:name=".SelectLetter"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".WordsActivity"
-            android:exported="true"></activity>
+            android:exported="false" />
+            android:name=".LevelsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Level1Activity"
             android:exported="false" />
@@ -29,15 +34,23 @@
         <activity
             android:name=".BoardingActivity"
             android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".OrderWordsActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>

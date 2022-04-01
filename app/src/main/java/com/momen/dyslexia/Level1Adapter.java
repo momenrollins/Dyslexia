@@ -5,6 +5,7 @@ import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderLevel holder, @SuppressLint("RecyclerView") int position) {
+
         if (!imgOnly) {
             holder.ivWord.setImageResource(level_1ModelList.get(position).image);
             holder.firstWord.setText(level_1ModelList.get(position).firstLetter);

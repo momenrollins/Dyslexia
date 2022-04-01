@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +27,15 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
     ArrayList<Level_1Model> level_1ModelList;
     String[] answersArray;
     String[] names;
+    int[] imgs;
     List<String> signs;
     List<String> letters;
     Context context;
-    TextToSpeech   tts;
+    TextToSpeech tts;
+    Boolean imgOnly = false;
+
     public Level1Adapter(Context context, ArrayList<Level_1Model> level_1ModelsList) {
-        this.context=context;
+        this.context = context;
         this.level_1ModelList = level_1ModelsList;
         signs = new ArrayList<>();
         letters = new ArrayList<>();
@@ -40,6 +44,13 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
             letters.add("");
         }
         answersArray = new String[level_1ModelList.size()];
+    }
+
+    public Level1Adapter(Context context, String[] names, int[] imgs, Boolean imgOnly) {
+        this.context = context;
+        this.names = names;
+        this.imgs = imgs;
+        this.imgOnly = imgOnly;
     }
 
     @NonNull
@@ -54,15 +65,22 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderLevel holder, @SuppressLint("RecyclerView") int position) {
-        Log.d("TAG", "onClick: "+letters.get(position));
-        holder.ivWord.setImageResource(level_1ModelList.get(position).image);
-        holder.firstWord.setText(level_1ModelList.get(position).firstLetter);
-        holder.secandWord.setText(level_1ModelList.get(position).lastLetter);
-        holder.signTv.setText(signs.get(position));
-        holder.letter.setText(letters.get(position));
-           tts = new TextToSpeech(context, status -> {
+
+        if (!imgOnly) {
+            holder.ivWord.setImageResource(level_1ModelList.get(position).image);
+            holder.firstWord.setText(level_1ModelList.get(position).firstLetter);
+            holder.secandWord.setText(level_1ModelList.get(position).lastLetter);
+            holder.signTv.setText(signs.get(position));
+            holder.letter.setText(letters.get(position));
+        }
+        else{
+/*            holder.imgLayout.getLayoutParams().height=320;
+            holder.imgLayout.getLayoutParams().width=320;*/
+        }
+
+        tts = new TextToSpeech(context, status -> {
             if (status == TextToSpeech.SUCCESS) {
-           tts.setLanguage(Locale.forLanguageTag("ar"));
+                tts.setLanguage(Locale.forLanguageTag("ar"));
 
             }
         });
@@ -78,7 +96,7 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return level_1ModelList.size();
+        return names.length;
     }
 
     public List<String> getLetters() {
@@ -101,6 +119,7 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
         private TextView firstWord;
         private ImageView ivWord;
         private TextView signTv;
+        private RelativeLayout imgLayout;
 
         public ViewHolderLevel(@NonNull View itemView) {
             super(itemView);
@@ -108,29 +127,34 @@ public class Level1Adapter extends RecyclerView.Adapter<Level1Adapter.ViewHolder
         }
 
         private void initView(View view) {
+            ivWord = (ImageView) view.findViewById(R.id.iv_word);
+            imgLayout = view.findViewById(R.id.imgLayout);
             secandWord = (TextView) view.findViewById(R.id.secand_word);
             letter = (EditText) view.findViewById(R.id.letter);
             firstWord = (TextView) view.findViewById(R.id.first_word);
-            ivWord = (ImageView) view.findViewById(R.id.iv_word);
             signTv = view.findViewById(R.id.tv_sign);
-            letter.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if (imgOnly) {
+                secandWord.setVisibility(View.GONE);
+                letter.setVisibility(View.GONE);
+                firstWord.setVisibility(View.GONE);
+                signTv.setVisibility(View.GONE);
+            } else
+                letter.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                }
+                    }
 
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    letters.set(getAdapterPosition(), charSequence.toString());
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        letters.set(getAdapterPosition(), charSequence.toString());
+                    }
 
+                    @Override
+                    public void afterTextChanged(Editable editable) {
 
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-                }
-            });
+                    }
+                });
         }
     }
 }

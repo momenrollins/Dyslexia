@@ -22,6 +22,8 @@ public class Level1Activity extends AppCompatActivity {
     ArrayList<Level_1Model> level_1ModelsList = new ArrayList<>();
     ArrayList<String> ans = new ArrayList<>();
     String[] names = {"مسجد", "خروف", "دب", "فيل", "أرنب", "معطف", "بيت"};
+    int[] imgs = {R.drawable.mosque,R.drawable.sheep,R.drawable.bear,
+            R.drawable.elephant, R.drawable.rabbit,R.drawable.coat,R.drawable.house};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,40 +39,46 @@ public class Level1Activity extends AppCompatActivity {
         level_1ModelsList.add(new Level_1Model(R.drawable.coat, "معطـ", ""));
         level_1ModelsList.add(new Level_1Model(R.drawable.house, "بـ", "ـت"));
         rvLevel1.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Level1Adapter(this,level_1ModelsList);
-        adapter.names=names;
-        rvLevel1.setAdapter(adapter);
-        ans.add("م");
-        ans.add("ف");
-        ans.add("ب");
-        ans.add("ف");
-        ans.add("ن");
-        ans.add("ف");
-        ans.add("ي");
-        rvLevel1.addItemDecoration(new DividerItemDecoration(rvLevel1.getContext(), DividerItemDecoration.VERTICAL));
+        if (false) {
+            adapter = new Level1Adapter(this,level_1ModelsList);
+            adapter.names = names;
+            rvLevel1.setAdapter(adapter);
+            ans.add("م");
+            ans.add("ف");
+            ans.add("ب");
+            ans.add("ف");
+            ans.add("ن");
+            ans.add("ف");
+            ans.add("ي");
+            rvLevel1.addItemDecoration(new DividerItemDecoration(rvLevel1.getContext(), DividerItemDecoration.VERTICAL));
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List<String> letters = adapter.getLetters();
-                int counter = 0;
-                for (int i = 0; i < letters.size(); i++) {
-                    String letter = letters.get(i);
-                    if (letter == null || letter.trim().equals("")) {
-                        adapter.signs.set(i, "");
-                        adapter.notifyItemChanged(i);
-                    } else if (letter.equals(ans.get(i))) {
-                        adapter.signs.set(i, "✔");
-                        adapter.notifyItemChanged(i);
-                        counter++;
-                    } else {
-                        adapter.signs.set(i, "❌");
-                        adapter.notifyItemChanged(i);
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    List<String> letters = adapter.getLetters();
+                    int counter = 0;
+                    for (int i = 0; i < letters.size(); i++) {
+                        String letter = letters.get(i);
+                        if (letter == null || letter.trim().equals("")) {
+                            adapter.signs.set(i, "");
+                            adapter.notifyItemChanged(i);
+                        } else if (letter.equals(ans.get(i))) {
+                            adapter.signs.set(i, "✔");
+                            adapter.notifyItemChanged(i);
+                            counter++;
+                        } else {
+                            adapter.signs.set(i, "❌");
+                            adapter.notifyItemChanged(i);
+                        }
                     }
+                    degree.setText(counter + " / " + letters.size());
                 }
-                degree.setText(counter + " / " + letters.size());
-            }
-        });
+            });
+        } else {
+            adapter = new Level1Adapter(this,names,imgs,true);
+            rvLevel1.setAdapter(adapter);
+
+        }
     }
 
     private void initView() {

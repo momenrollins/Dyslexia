@@ -19,6 +19,9 @@
         <activity
             android:name=".WordsActivity"
             android:exported="false" />
+            android:name=".LevelsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Level1Activity"
             android:exported="false" />

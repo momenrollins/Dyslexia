@@ -26,16 +26,16 @@ import java.util.Set;
 
 public class SelectLetter extends AppCompatActivity {
     private Level1Adapter adapter;
-    String[] right_letters = {"ت", "ت"};
-    String[] wrond_letters = {"ن", "ك"};
-    ArrayList<String> right_letters_answer =new ArrayList();
-    ArrayList<String> wrond_letters_answer= new ArrayList();
-    int[] images = {R.drawable.tmr, R.drawable.trabeza};
+    String[] right_letters = {"ت", "ت", "ت"};
+    String[] wrond_letters = {"ن", "ك", "ط"};
+    ArrayList<String> right_letters_answer = new ArrayList();
+    ArrayList<String> wrond_letters_answer = new ArrayList();
+    int[] images = {R.drawable.tmr, R.drawable.trabeza, R.drawable.crown};
     private RecyclerView rvSelectletter;
     private ImageView ivWord;
     private LinearLayout linyer;
-    private TextView l2;
-    private TextView l1;
+    private Button l2;
+    private Button l1;
     private Button lNext;
     int index = 0;
     int counter = 0;
@@ -43,7 +43,7 @@ public class SelectLetter extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     ArrayList<Level_1Model> level_1ModelsList = new ArrayList<>();
-    String[] names = {"مسجد", "خروف", "دب", "فيل", "أرنب", "معطف", "بيت"};
+    String[] names = {"ظرف", "طائرة", "طاووس", "ظفر"};
     String[] letternames = {"م", "خ", "د", "ف", "أ", "م", "ب"};
     private TextView txtLetter;
     private ExtendedFloatingActionButton submitBtn;
@@ -54,43 +54,20 @@ public class SelectLetter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_letter);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         initView();
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        ans.add("م");
-        ans.add("خ");
-        ans.add("د");
-        ans.add("ف");
-        ans.add("أ");
-        ans.add("م");
-        ans.add("ب");
-        level_1ModelsList.add(new Level_1Model(R.drawable.mosque, "مسجد", ""));
-        level_1ModelsList.add(new Level_1Model(R.drawable.sheep, "خروف", ""));
-        level_1ModelsList.add(new Level_1Model(R.drawable.bear, "دب", ""));
-        level_1ModelsList.add(new Level_1Model(R.drawable.elephant, "فيل", ""));
-        level_1ModelsList.add(new Level_1Model(R.drawable.rabbit, "أرنب", ""));
-        level_1ModelsList.add(new Level_1Model(R.drawable.coat, "معطف", ""));
-        level_1ModelsList.add(new Level_1Model(R.drawable.house, "بيت", ""));
+        ans.add("ظ");
+        ans.add("ط");
+        ans.add("ط");
+        ans.add("ظ");
+        level_1ModelsList.add(new Level_1Model(R.drawable.envelope, "ظرف", ""));
+        level_1ModelsList.add(new Level_1Model(R.drawable.plane, "طائرة", ""));
+        level_1ModelsList.add(new Level_1Model(R.drawable.peacock, "طاووس", ""));
+        level_1ModelsList.add(new Level_1Model(R.drawable.fingernail, "ظفر", ""));
         rvSelectletter.setLayoutManager(new LinearLayoutManager(SelectLetter.this));
         adapter = new Level1Adapter(this, level_1ModelsList);
+
         adapter.names = names;
         rvSelectletter.setAdapter(adapter);
         ivWord.setImageResource(images[0]);
@@ -147,11 +124,13 @@ public class SelectLetter extends AppCompatActivity {
                     ivWord.setVisibility(View.GONE);
                     lNext.setVisibility(View.GONE);
                     submitBtn.setVisibility(View.VISIBLE);
-                    for (String letter : letternames) {
+                    /*for (String letter : letternames) {
 
                         txtLetter.append(letter + "  ");
 
-                    }
+                    }*/
+                    txtLetter.setText("اكتب الحرف الذي يبدأ به الصورة");
+
                 } else {
                     ivWord.setImageResource(images[index]);
                     l1.setText(right_letters[index]);
@@ -167,7 +146,7 @@ public class SelectLetter extends AppCompatActivity {
                 wrond_letters_answer.add(right_letters[index]);
                 l1.setBackgroundColor(Color.GREEN);
                 l2.setBackgroundColor(Color.RED);
-                index++;
+//                index++;
 
                 if (index == right_letters.length) {
                     txtLetter.setText("");
@@ -178,11 +157,12 @@ public class SelectLetter extends AppCompatActivity {
                     ivWord.setVisibility(View.GONE);
                     lNext.setVisibility(View.GONE);
                     submitBtn.setVisibility(View.VISIBLE);
-                    for (String letter : letternames) {
+                   /* for (String letter : letternames) {
 
                         txtLetter.append(letter + "  ");
 
-                    }
+                    }*/
+                    txtLetter.setText("اكتب الحرف الذي يبدأ به الصورة");
                 } else {
                     ivWord.setImageResource(images[index]);
                     l1.setText(right_letters[index]);
@@ -198,36 +178,37 @@ public class SelectLetter extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<String> letters = adapter.getLetters();
-                Log.d("TAG", "onClick:letters  "+letters.size());
+                counter = 3;
+                Log.d("TAG", "onClick:letters  " + letters.size());
                 for (int i = 0; i < letters.size(); i++) {
-                    Log.d("TAG", "onClick:letters  "+letters.get(i));
+                    Log.d("TAG", "onClick:letters  " + letters.get(i));
 
                     String letter = letters.get(i);
                     if (letter == null || letter.trim().equals("")) {
-                        Log.d("TAG", "onClick:letters null "+letters.get(i));
+                        Log.d("TAG", "onClick:letters null " + letters.get(i));
 
                         adapter.signs.set(i, "");
                         adapter.notifyItemChanged(i);
                     } else if (letter.equals(ans.get(i))) {
-                        Log.d("TAG", "onClick:letters R "+letters.get(i));
+                        Log.d("TAG", "onClick:letters R " + letters.get(i));
 
                         adapter.signs.set(i, "✔");
                         adapter.notifyItemChanged(i);
                         counter++;
                     } else {
-                        Log.d("TAG", "onClick:letters F "+letters.get(i));
+                        Log.d("TAG", "onClick:letters F " + letters.get(i));
 
                         adapter.signs.set(i, "❌");
                         adapter.notifyItemChanged(i);
                     }
                 }
-                txtLetter.setText(counter + " / " + (names.length+right_letters.length));
+                txtLetter.setText(counter + " / " + (names.length + right_letters.length));
                 Set<String> set = new HashSet<String>();
                 Set<String> set2 = new HashSet<String>();
                 set.addAll(right_letters_answer);
                 set2.addAll(wrond_letters_answer);
-                editor.putStringSet("selectFLettersRight",set);
-                editor.putStringSet("selectFLettersWrong",set2);
+                editor.putStringSet("selectFLettersRight", set);
+                editor.putStringSet("selectFLettersWrong", set2);
                 editor.commit();
             }
         });
@@ -238,8 +219,8 @@ public class SelectLetter extends AppCompatActivity {
         rvSelectletter = (RecyclerView) findViewById(R.id.rv_selectletter);
         ivWord = (ImageView) findViewById(R.id.iv_word);
         linyer = (LinearLayout) findViewById(R.id.linyer);
-        l2 = (TextView) findViewById(R.id.l_2);
-        l1 = (TextView) findViewById(R.id.l_1);
+        l2 = findViewById(R.id.l_2);
+        l1 = findViewById(R.id.l_1);
         lNext = (Button) findViewById(R.id.l_next);
         txtLetter = (TextView) findViewById(R.id.txt_letter);
         submitBtn = (ExtendedFloatingActionButton) findViewById(R.id.submit_btn);

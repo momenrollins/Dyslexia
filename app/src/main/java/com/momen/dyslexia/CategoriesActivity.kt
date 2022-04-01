@@ -3,7 +3,6 @@ package com.momen.dyslexia
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_categories.*
 
 class CategoriesActivity : AppCompatActivity() {
@@ -20,12 +19,13 @@ class CategoriesActivity : AppCompatActivity() {
         val itemListiner = CategoriesAdapter.OnItemClickListener { position ->
             if (position == 0)
                 startActivity(Intent(this@CategoriesActivity, SelectLetter::class.java))
-            else if (position == 2)
-                startActivity(Intent(this@CategoriesActivity, MainActivity::class.java))
             else if (position == 1)
                 startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java))
+
+/*          else if (position == 2)
+                startActivity(Intent(this@CategoriesActivity, LettersRecord::class.java))
             else if (position == 3)
-                startActivity(Intent(this@CategoriesActivity, WordsActivity::class.java))
+                startActivity(Intent(this@CategoriesActivity, WordsActivity::class.java))*/
 
 
         }

@@ -22,14 +22,17 @@ public class Level1Activity extends AppCompatActivity {
     ArrayList<Level_1Model> level_1ModelsList = new ArrayList<>();
     ArrayList<String> ans = new ArrayList<>();
     String[] names = {"مسجد", "خروف", "دب", "فيل", "أرنب", "معطف", "بيت"};
-    int[] imgs = {R.drawable.mosque,R.drawable.sheep,R.drawable.bear,
-            R.drawable.elephant, R.drawable.rabbit,R.drawable.coat,R.drawable.house};
+    int[] imgs = {R.drawable.mosque, R.drawable.sheep, R.drawable.bear,
+            R.drawable.elephant, R.drawable.rabbit, R.drawable.coat, R.drawable.house};
+
+    int index = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1);
         initView();
+        index = getIntent().getIntExtra("index", 1);
         level_1ModelsList.add(new Level_1Model(R.drawable.mosque, "", "ـسجد"));
         level_1ModelsList.add(new Level_1Model(R.drawable.sheep, "خرو", ""));
         level_1ModelsList.add(new Level_1Model(R.drawable.bear, "د", ""));
@@ -39,8 +42,8 @@ public class Level1Activity extends AppCompatActivity {
         level_1ModelsList.add(new Level_1Model(R.drawable.coat, "معطـ", ""));
         level_1ModelsList.add(new Level_1Model(R.drawable.house, "بـ", "ـت"));
         rvLevel1.setLayoutManager(new LinearLayoutManager(this));
-        if (false) {
-            adapter = new Level1Adapter(this,level_1ModelsList);
+        if (index == 1) {
+            adapter = new Level1Adapter(this, level_1ModelsList);
             adapter.names = names;
             rvLevel1.setAdapter(adapter);
             ans.add("م");
@@ -75,7 +78,7 @@ public class Level1Activity extends AppCompatActivity {
                 }
             });
         } else {
-            adapter = new Level1Adapter(this,names,imgs,true);
+            adapter = new Level1Adapter(this, names, imgs, true);
             rvLevel1.setAdapter(adapter);
 
         }

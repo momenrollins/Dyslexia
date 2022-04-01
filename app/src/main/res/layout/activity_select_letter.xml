@@ -6,85 +6,88 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SelectLetter">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/txt_letter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textColor="#2196F3"
-        android:textSize="25sp"
-        android:visibility="visible" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_selectletter"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:listitem="@layout/level_1_item" />
-
-    <ImageView
-        android:layout_marginTop="30dp"
-        android:id="@+id/iv_word"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/vector" />
 
     <LinearLayout
-        android:id="@+id/linyer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/l_next"
-        android:layout_below="@+id/iv_word"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        android:padding="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_word">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/l_2"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_letter"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:layout_weight="1"
             android:gravity="center"
-            android:text="h"
+            android:padding="15dp"
             android:textColor="#2196F3"
-            android:textSize="25sp" />
+            android:textSize="20sp"
+            android:text="اضغط على الحرف الذي يبدأ به الصورة"
+            android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/l_1"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_selectletter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:listitem="@layout/level_1_item" />
+
+        <ImageView
+            android:id="@+id/iv_word"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/vector" />
+
+        <LinearLayout
+            android:id="@+id/linyer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
+            android:layout_above="@+id/l_next"
+            android:layout_below="@+id/iv_word"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:padding="25dp"
             android:gravity="center"
-            android:text="h"
-            android:textColor="#2196F3"
-            android:textSize="25sp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_word">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/l_2"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="h"
+                app:cornerRadius="7dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:textSize="25sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/l_1"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                app:cornerRadius="7dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"    android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="h"
+                android:textSize="25sp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/l_next"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="40dp"
+            android:text="التالى" />
 
 
     </LinearLayout>
 
-    <Button
-        android:layout_marginTop="40dp"
-        android:id="@+id/l_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="التالى"
- />
-
-
-</LinearLayout>
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/submit_btn"
         android:layout_width="wrap_content"
@@ -93,8 +96,8 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:text="Submit"
-        android:visibility="gone"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:icon="@drawable/ic_baseline_check_circle_outline_24" />
 </RelativeLayout>

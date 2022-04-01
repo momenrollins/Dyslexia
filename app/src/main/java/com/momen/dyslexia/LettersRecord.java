@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.Set;
 
 
-public class MainActivity extends AppCompatActivity {
+public class LettersRecord extends AppCompatActivity {
 
     private TextView mText;
     private TextView mText2;

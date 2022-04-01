@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class OrderWordsActivity extends AppCompatActivity {
-    String[] listWords = {"يسبح السمك فى الماء", "هذه سمكة صغيرة", "هى معلمة نشيطة", "هذا طير أزرق"};
+    String[] listWords = {"يسبح السمك في الماء", "هذه سمكة صغيرة", "هي معلمة نشيطة", "هذا طير ازرق"};
     int[] images = {R.drawable.swim_fish, R.drawable.small_fish, R.drawable.active_teacher, R.drawable.blue_baird};
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
@@ -32,7 +32,8 @@ public class OrderWordsActivity extends AppCompatActivity {
     private EditText letter14;
     private Button nextWord;
     private TextView result;
-int index=0;
+    int index = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,20 +44,20 @@ int index=0;
             @Override
             public void onClick(View view) {
                 String[] word = listWords[index].split(" ");
-                Log.d("TAG", "onClick: " +index+ letter14.getText().toString().trim() +" "+ letter13.getText().toString().trim()  +" "+ letter12.getText().toString().trim()  +" "+ letter11.getText().toString().trim());
+                Log.d("TAG", "onClick: " + index + letter14.getText().toString().trim() + " " + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim());
 
                 if (word.length == 3) {
-                    String _result = letter14.getText().toString().trim() + letter13.getText().toString().trim()  +" "+ letter12.getText().toString().trim()  +" "+ letter11.getText().toString().trim() ;
-                    Log.d("TAG", "onClick:result "+ _result);
-                    Log.d("TAG", "onClick:result  "+ listWords[index]);
-                    _result.replace(" ","");
+                    String _result = letter14.getText().toString().trim() + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
+                    Log.d("TAG", "onClick:result " + _result);
+                    Log.d("TAG", "onClick:result  " + listWords[index]);
+                    _result.replace(" ", "");
                     if (_result.equals(listWords[index])) {
 
                         rightLetters.add(listWords[index]);
 
 
                     } else {
-                        Log.d("TAG", "onClick:wrong   "+ listWords[index]);
+                        Log.d("TAG", "onClick:wrong   " + listWords[index]);
 
                         wrongLetters.add(listWords[index]);
 
@@ -66,7 +67,7 @@ int index=0;
                     splitT3Letters();
 
                 } else {
-                    String _result = letter14.getText().toString().trim() +" "+ letter13.getText().toString().trim()  +" "+ letter12.getText().toString().trim()  +" "+ letter11.getText().toString().trim() ;
+                    String _result = letter14.getText().toString().trim() + " " + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
 
                     if (_result.equals(listWords[index])) {
 

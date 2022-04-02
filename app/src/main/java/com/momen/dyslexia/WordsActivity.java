@@ -1,5 +1,7 @@
 package com.momen.dyslexia;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +17,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class WordsActivity extends AppCompatActivity {
 
@@ -38,13 +42,16 @@ public class WordsActivity extends AppCompatActivity {
     int index = 0;
     private EditText letter14;
     private TextView result;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_words_aactivity);
         initView();
-
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         splitT3Letters();
         nextWord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +121,12 @@ public class WordsActivity extends AppCompatActivity {
                 for (int x = 0; x < wrongLetters.size(); x++) {
                     result.append(wrongLetters.get(x) + ",");
                 }
+                Set<String> set = new HashSet<String>();
+                set.addAll(wrongLetters);
+
+                editor.putStringSet("words_wrong_l3",set);
+                editor.commit();
+
             }
             nextWord.setVisibility(View.GONE);
             letter11.setVisibility(View.GONE);

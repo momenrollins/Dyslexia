@@ -1,5 +1,7 @@
 package com.momen.dyslexia;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +14,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class OrderWordsActivity extends AppCompatActivity {
     String[] listWords = {"يسبح السمك في الماء", "هذه سمكة صغيرة", "هي معلمة نشيطة", "هذا طير ازرق"};
@@ -33,12 +37,15 @@ public class OrderWordsActivity extends AppCompatActivity {
     private Button nextWord;
     private TextView result;
     int index = 0;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_words);
         initView();
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         splitT3Letters();
         nextWord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +120,11 @@ public class OrderWordsActivity extends AppCompatActivity {
                 for (int x = 0; x < wrongLetters.size(); x++) {
                     result.append(wrongLetters.get(x) + ",");
                 }
+                Set<String> set = new HashSet<String>();
+                set.addAll(wrongLetters);
+                editor.putStringSet("wrongLetters_l5",set);
+                editor.commit();
+
             }
             nextWord.setVisibility(View.GONE);
             letter11.setVisibility(View.GONE);

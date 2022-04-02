@@ -197,6 +197,7 @@ public class SelectLetter extends AppCompatActivity {
                         counter++;
                     } else {
                         Log.d("TAG", "onClick:letters F " + letters.get(i));
+                        wrond_letters_answer.add(level_1ModelsList.get(i).firstLetter);
 
                         adapter.signs.set(i, "❌");
                         adapter.notifyItemChanged(i);

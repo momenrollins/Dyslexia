@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/result_dialog.xml" value="0.17074275362318841" />
+
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/drawable-v24/indicator_inactive.xml" value="0.226" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_choose.xml" value="0.23645833333333333" />
+
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_select_letter.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/nolov/AndroidStudioProjects/Dyslexia/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.107" />
         <entry key="..\:/Users/nolov/AndroidStudioProjects/Dyslexia/app/src/main/res/drawable-v24/indicator_active.xml" value="0.185" />

@@ -1,5 +1,7 @@
 package com.momen.dyslexia;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Level1Activity extends AppCompatActivity {
 
@@ -20,13 +24,15 @@ public class Level1Activity extends AppCompatActivity {
     private Button submit;
     private TextView degree;
     ArrayList<Level_1Model> level_1ModelsList = new ArrayList<>();
+    ArrayList<String> wrongList = new ArrayList<>();
     ArrayList<String> ans = new ArrayList<>();
     String[] names = {"مسجد", "خروف", "دب", "فيل", "أرنب", "معطف", "بيت"};
     int[] imgs = {R.drawable.mosque, R.drawable.sheep, R.drawable.bear,
             R.drawable.elephant, R.drawable.rabbit, R.drawable.coat, R.drawable.house};
 
     int index = 1;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,8 @@ public class Level1Activity extends AppCompatActivity {
         level_1ModelsList.add(new Level_1Model(R.drawable.coat, "معطـ", ""));
         level_1ModelsList.add(new Level_1Model(R.drawable.house, "بـ", "ـت"));
         rvLevel1.setLayoutManager(new LinearLayoutManager(this));
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         if (index == 1) {
             adapter = new Level1Adapter(this, level_1ModelsList);
             adapter.names = names;
@@ -71,10 +79,15 @@ public class Level1Activity extends AppCompatActivity {
                             counter++;
                         } else {
                             adapter.signs.set(i, "❌");
+                            wrongList.add(names[i]);
                             adapter.notifyItemChanged(i);
                         }
                     }
                     degree.setText(counter + " / " + letters.size());
+                    Set<String> set = new HashSet<String>();
+                    set.addAll(wrongList);
+                    editor.putStringSet("wrong_words_l2",set);
+                    editor.commit();
                 }
             });
         } else {

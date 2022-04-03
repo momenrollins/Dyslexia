@@ -63,6 +63,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                     context,
                     OrderWordsActivity::class.java
                 ).putExtra("index", position)
+
             ) else {
                 val dialog = Dialog(context)
                 dialog.setTitle("النتائج")
@@ -154,6 +155,13 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 dialog.show()
 
             }
+            )
+  /*          else context.startActivity(
+                Intent(
+                    context,
+                    ChooseActivity::class.java
+                ).putExtra("index", position)
+            )*/
         }
     }
 

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) :
     RecyclerView.Adapter<LevelAdapter.ViewHolderLevel>() {
-    var sharedPreferences: SharedPreferences? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderLevel {
@@ -65,105 +64,18 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 ).putExtra("index", position)
 
             ) else {
-                val dialog = Dialog(context)
-                dialog.setTitle("النتائج")
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.setCancelable(false)
-                dialog.setContentView(R.layout.result_dialog)
-                val lp = WindowManager.LayoutParams()
-                lp.copyFrom(dialog.getWindow()!!.getAttributes())
-                lp.width = WindowManager.LayoutParams.MATCH_PARENT
-//                lp.height = 500
-                dialog.show()
-                dialog.getWindow()!!.setAttributes(lp)
-                val dialogTxt: TextView = dialog.findViewById<TextView>(R.id.text_dialog)
-                var set: Set<String> = HashSet()
-                set = sharedPreferences!!.getStringSet("wrongLetters", null)!!
-
-                dialogTxt.append("\nالمستوى الاول:")
-                if (set.isNotEmpty()) {
-
-                    dialogTxt.append("\n الكلمات الخاطئة")
-                    set.forEach { s ->
-                        dialogTxt.append("${s},")
-                    }
-                }else{
-                    dialogTxt.append("\n لاتوجد كلمات خاطئة")
-
-                }
-                dialogTxt.append("\n==========================")
-                dialogTxt.append("\nالمستوى الثانى:")
-
-                set=sharedPreferences!!.getStringSet("wrong_words_l2",null)!!
-                if (set.isNotEmpty()) {
-                    dialogTxt.append("\n الكلمات الخاطئة:")
-
-                    set.forEach { s ->
-                        dialogTxt.append("${s},")
-                    }
-                }else{
-                    dialogTxt.append("\n لاتوجد كلمات خاطئة")
-
-                }
-                dialogTxt.append("\n==========================")
-                dialogTxt.append("\nالمستوى الثالث:")
-
-                set=sharedPreferences!!.getStringSet("words_wrong_l3",null)!!
-                if (set.isNotEmpty()) {
-                    dialogTxt.append("\n الكلمات الخاطئة:")
-
-                    set.forEach { s ->
-                        dialogTxt.append("${s},")
-                    }
-                }else{
-                    dialogTxt.append("\n لاتوجد كلمات خاطئة")
-
-                }
-                dialogTxt.append("\n==========================")
-                dialogTxt.append("\nالمستوى الرابع:")
-
-                set=sharedPreferences!!.getStringSet("selectFLettersWrong",null)!!
-                if (set.isNotEmpty()) {
-                    dialogTxt.append("\n الكلمات الخاطئة:")
-
-                    set.forEach { s ->
-                        dialogTxt.append("${s},")
-                    }
-                }else{
-                    dialogTxt.append("\n لاتوجد كلمات خاطئة")
-
-                }
-                dialogTxt.append("\n==========================")
-                dialogTxt.append("\nالمستوى الخامس:")
-
-                set=sharedPreferences!!.getStringSet("wrongLetters_l5",null)!!
-                if (set.isNotEmpty()) {
-                    dialogTxt.append("\n الكلمات الخاطئة:")
-
-                    set.forEach { s ->
-                        dialogTxt.append("${s},")
-                    }
-                }else{
-                    dialogTxt.append("\n لاتوجد كلمات خاطئة")
-
-                }
-
-
-                val dialogButton: Button = dialog.findViewById(R.id.btn_dialog) as Button
-                dialogButton.setOnClickListener(View.OnClickListener { dialog.dismiss() })
-
-                dialog.show()
-
+                context.startActivity(
+                    Intent(
+                        context,
+                        ChooseActivity::class.java
+                    ).putExtra("index", position))
             }
-            )
-  /*          else context.startActivity(
-                Intent(
-                    context,
-                    ChooseActivity::class.java
-                ).putExtra("index", position)
-            )*/
+            //)
+            /*
+                      )*/
         }
     }
+
 
     override fun getItemCount(): Int {
         return levelTextArray.size
@@ -184,7 +96,6 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
         fun initView(view: View) {
             levelText = view.findViewById(R.id.level_text)
             levelCard = view.findViewById(R.id.level_card)
-            sharedPreferences = context.getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
 
         }
 

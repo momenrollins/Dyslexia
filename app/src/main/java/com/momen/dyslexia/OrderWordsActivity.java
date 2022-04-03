@@ -123,6 +123,7 @@ public class OrderWordsActivity extends AppCompatActivity {
                 Set<String> set = new HashSet<String>();
                 set.addAll(wrongLetters);
                 editor.putStringSet("wrongLetters_l5",set);
+                editor.putString("lvl5Deg",rightLetters.size()  + " / " + listWords.length);
                 editor.commit();
 
             }

@@ -210,6 +210,7 @@ public class SelectLetter extends AppCompatActivity {
                 set2.addAll(wrond_letters_answer);
                 editor.putStringSet("selectFLettersRight", set);
                 editor.putStringSet("selectFLettersWrong", set2);
+                editor.putString("lvl4Deg",counter  + " / " + (names.length + right_letters.length));
                 editor.commit();
             }
         });

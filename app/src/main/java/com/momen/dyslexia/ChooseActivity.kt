@@ -1,9 +1,10 @@
 package com.momen.dyslexia
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View.GONE
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_choose.*
 
 class ChooseActivity : AppCompatActivity() {
@@ -13,6 +14,8 @@ class ChooseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose)
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", MODE_PRIVATE)
+        editor = sharedPreferences!!.edit()
         choosesList.add(
             ChooseModel(
                 "الشيء التي تحبه ليلى هو",
@@ -81,6 +84,9 @@ class ChooseActivity : AppCompatActivity() {
         }
     }
 
+    var sharedPreferences: SharedPreferences? = null
+    var editor: SharedPreferences.Editor? = null
+
     @SuppressLint("SetTextI18n")
     private fun handleClick() {
         index++
@@ -95,6 +101,10 @@ class ChooseActivity : AppCompatActivity() {
             ans4.visibility = GONE
             questionTv.text = "عدد الاجابات الصحيحة: $degree \n" +
                     "عدد الاجابات الخاطئة: ${choosesList.size - degree}"
+
+            editor!!.putString("lvl6Deg", degree.toString() + " / " + (choosesList.size))
+            editor!!.commit()
+
         }
     }
 

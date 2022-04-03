@@ -56,10 +56,16 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                     SelectLetter::class.java
                 ).putExtra("index", position)
             )
-            else context.startActivity(
+            else if (position == 4) context.startActivity(
                 Intent(
                     context,
                     OrderWordsActivity::class.java
+                ).putExtra("index", position)
+            )
+            else context.startActivity(
+                Intent(
+                    context,
+                    ChooseActivity::class.java
                 ).putExtra("index", position)
             )
         }

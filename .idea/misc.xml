@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.149" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/drawable-v24/indicator_active.xml" value="0.149" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/drawable/back.xml" value="0.149" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_boarding.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_categories.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_level1.xml" value="0.11413043478260869" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_select_letter.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_words.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_words_images.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/item_categories.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/item_level.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/level_1_item.xml" value="0.11413043478260869" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/on_boarding_item.xml" value="0.17074275362318841" />
         <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/result_dialog.xml" value="0.17074275362318841" />
+        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/word_item.xml" value="0.18" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_select_letter.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/nolov/AndroidStudioProjects/Dyslexia/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.107" />
         <entry key="..\:/Users/nolov/AndroidStudioProjects/Dyslexia/app/src/main/res/drawable-v24/indicator_active.xml" value="0.185" />

@@ -16,6 +16,7 @@ class LevelsActivity : AppCompatActivity() {
         levels.add("المستوى الرابع")
         levels.add("المستوى الخامس")
         levels.add("نتائج الاختبارات")
+        levels.add("المستوى السادس")
 
         level_recycler.setLayoutManager(LinearLayoutManager(this))
         level_recycler.setAdapter(LevelAdapter(levels, this))

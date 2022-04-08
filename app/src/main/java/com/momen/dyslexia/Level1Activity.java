@@ -87,6 +87,7 @@ public class Level1Activity extends AppCompatActivity {
                     Set<String> set = new HashSet<String>();
                     set.addAll(wrongList);
                     editor.putStringSet("wrong_words_l2",set);
+                    editor.putString("lvl2Deg",counter + " / " + letters.size());
                     editor.commit();
                 }
             });

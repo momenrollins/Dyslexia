@@ -125,6 +125,7 @@ public class WordsActivity extends AppCompatActivity {
                 set.addAll(wrongLetters);
 
                 editor.putStringSet("words_wrong_l3",set);
+                editor.putString("lvl3Deg",rightLetters.size()  + " / " + listWords.length);
                 editor.commit();
 
             }

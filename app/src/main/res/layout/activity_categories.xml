@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/bg"
     tools:context=".CategoriesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +13,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
+        app:spanCount="1"
         tools:itemCount="4"
 
         tools:listitem="@layout/item_categories" />

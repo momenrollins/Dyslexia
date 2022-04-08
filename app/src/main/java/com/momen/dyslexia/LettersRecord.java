@@ -184,7 +184,7 @@ public class LettersRecord extends AppCompatActivity {
         else
             mText.setText(
                 "حاول تانى 😢");*/
-            mText.setText(
+        mText.setText(
                 "");
 
 
@@ -210,6 +210,7 @@ public class LettersRecord extends AppCompatActivity {
         set2.addAll(wrongLetters);
         editor.putStringSet("rightLetters", set);
         editor.putStringSet("wrongLetters", set2);
+        editor.putString("lvl1Deg", rightLetters.size() + " / " + letters.length);
         editor.commit();
 
         rightLetters.clear();

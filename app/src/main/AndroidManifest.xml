@@ -12,8 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dyslexia">
         <activity
-            android:name=".ChooseActivity"
-            android:exported="false" />
+            android:name=".LettersImages"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SelectLetter"
             android:exported="true"></activity>
@@ -23,6 +29,7 @@
         <activity
             android:name=".LevelsActivity"
             android:exported="false" />
+
         <activity
             android:name=".Level1Activity"
             android:exported="false" />

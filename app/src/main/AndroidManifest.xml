@@ -14,11 +14,7 @@
         <activity
             android:name=".LettersImages"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SelectLetter"
@@ -32,6 +28,9 @@
 
         <activity
             android:name=".Level1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseActivity"
             android:exported="false" />
         <activity
             android:name=".PDFActivity"

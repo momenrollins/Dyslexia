@@ -21,9 +21,9 @@ class CategoriesActivity : AppCompatActivity() {
                 startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
             else if (position == 1)
                 startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java))
-
-/*          else if (position == 2)
-                startActivity(Intent(this@CategoriesActivity, LettersRecord::class.java))
+            else if (position == 2)
+                startActivity(Intent(this@CategoriesActivity, LettersImages::class.java))
+/*
             else if (position == 3)
                 startActivity(Intent(this@CategoriesActivity, WordsActivity::class.java))*/
 

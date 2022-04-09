@@ -2,6 +2,7 @@ package com.momen.dyslexia;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +22,16 @@ public class LettersImagesAdapter extends RecyclerView.Adapter<LettersImagesAdap
     int[] images;
     int[] right_images;
     int[] left_images;
+    int[] lettersSounds;
     TextToSpeech tts;
     Context context;
-    public LettersImagesAdapter(int[] images, int[] right_images, int[] left_images, String[] names, Context context) {
+    public LettersImagesAdapter(int[] images, int[] right_images, int[] left_images, String[] names, int[] lettersSounds, Context context) {
         this.context = context;
         this.names = names;
         this.images = images;
         this.right_images = right_images;
         this.left_images = left_images;
+        this.lettersSounds = lettersSounds;
     }
 
     @NonNull
@@ -55,7 +58,8 @@ public class LettersImagesAdapter extends RecyclerView.Adapter<LettersImagesAdap
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tts.speak(names[position], TextToSpeech.QUEUE_FLUSH, null);
+                MediaPlayer.create(context, lettersSounds[position]).start();
+                //tts.speak(names[position], TextToSpeech.QUEUE_FLUSH, null);
             }
         });
     }

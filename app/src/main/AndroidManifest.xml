@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dyslexia">
         <activity
-            android:name=".LettersActivity"
+            android:name=".DisplayLettersVideos"
+            android:screenOrientation="landscape"
+/>
+      <android:name=".LettersActivity"
             android:exported="false" />
         <activity
             android:name=".LettersImages"

@@ -22,7 +22,7 @@ class CategoriesActivity : AppCompatActivity() {
             else if (position == 1)
                 startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java))
             else if (position == 2)
-                startActivity(Intent(this@CategoriesActivity, LettersImages::class.java))
+                startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))
 /*
             else if (position == 3)
                 startActivity(Intent(this@CategoriesActivity, WordsActivity::class.java))*/

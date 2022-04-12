@@ -58,54 +58,51 @@ class DisplayLettersVideos : AppCompatActivity() {
         index = intent.getIntExtra("position", 0)
         action(index)
 
-            replayBtn.setOnClickListener {
-                action(index)
+        replayBtn.setOnClickListener {
+            action(index)
 
-            }
-            nextBtn.setOnClickListener {
-                index++
-                action(index)
+        }
+        nextBtn.setOnClickListener {
+            index++
+            action(index)
 
-            }
-            backBtn.setOnClickListener {
-                index--
-                action(index)
+        }
+        backBtn.setOnClickListener {
+            index--
+            action(index)
 
-            }
+        }
 
 
-
-      //  initView()
+        //  initView()
     }
 
 
     private fun action(index: Int) {
-
-        options!!.visibility = View.GONE
+        if (index == 0) {
+            backBtn.visibility = View.INVISIBLE
+        } else if (index == videos.size - 1) {
+            nextBtn.visibility = View.INVISIBLE
+        } else {
+            nextBtn.visibility = View.VISIBLE
+            backBtn.visibility = View.VISIBLE
+        }
 
         path = "android.resource://" + packageName + "/" + videos[index]
         videoView!!.setVideoURI(Uri.parse(path))
         videoView!!.start()
-        videoView!!.setOnCompletionListener {
+        /*videoView!!.setOnCompletionListener {
          options!!.visibility = View.VISIBLE
-        }
+        }*/
 
-        if (index==0){
-            backBtn.visibility = View.GONE
-        }else if (index== videos.size -1){
-            nextBtn.visibility = View.GONE
-        }else{
-            nextBtn.visibility = View.VISIBLE
-            backBtn.visibility = View.VISIBLE
 
-        }
     }
-   /* private fun initView() {
-        videoView = findViewById<View>(R.id.videoView) as VideoView
-        finishBtn = findViewById<View>(R.id.finishBtn) as Button
-        options = findViewById<View>(R.id.options) as LinearLayout
-        backBtn = findViewById<View>(R.id.backBtn) as ImageButton
-        replayBtn = findViewById<View>(R.id.replayBtn) as ImageButton
-        nextBtn = findViewById<View>(R.id.nextBtn) as ImageButton
-    }*/
+    /* private fun initView() {
+         videoView = findViewById<View>(R.id.videoView) as VideoView
+         finishBtn = findViewById<View>(R.id.finishBtn) as Button
+         options = findViewById<View>(R.id.options) as LinearLayout
+         backBtn = findViewById<View>(R.id.backBtn) as ImageButton
+         replayBtn = findViewById<View>(R.id.replayBtn) as ImageButton
+         nextBtn = findViewById<View>(R.id.nextBtn) as ImageButton
+     }*/
 }

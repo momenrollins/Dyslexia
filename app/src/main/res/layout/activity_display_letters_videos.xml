@@ -15,26 +15,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true" />
 
-    <Button
-        android:id="@+id/finishBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"
-        android:text="انهاء"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
-
     <LinearLayout
         android:id="@+id/options"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="horizontal">
 
         <ImageButton

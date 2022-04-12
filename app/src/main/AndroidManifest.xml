@@ -13,11 +13,11 @@
         android:theme="@style/Theme.Dyslexia">
         <activity
             android:name=".DisplayLettersVideos"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".LettersActivity"
-            android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:exported="false" />
         <activity
             android:name=".LettersImages"
             android:exported="true"></activity>

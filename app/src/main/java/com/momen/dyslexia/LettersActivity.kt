@@ -48,13 +48,11 @@ class LettersActivity : AppCompatActivity() {
         lettersAdapter = LettersAdapter(letters)
         recyclerView!!.adapter = lettersAdapter
         lettersAdapter!!.setOnItemClickListener(LettersAdapter.OnItemClickListener { position ->
-            {/*
-                startActivity(
-                    Intent(
-                        this, LettersActivity::class.java
-                    ).putExtra("position", position)
-                )*/
-            }
+            startActivity(
+                Intent(
+                    this, DisplayLettersVideos::class.java
+                ).putExtra("position", position)
+            )
         })
     }
 }

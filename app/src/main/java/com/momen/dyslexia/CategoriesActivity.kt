@@ -23,10 +23,9 @@ class CategoriesActivity : AppCompatActivity() {
                 startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java))
             else if (position == 2)
                 startActivity(Intent(this@CategoriesActivity, LettersImages::class.java))
-                startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))
-/*
+
             else if (position == 3)
-                startActivity(Intent(this@CategoriesActivity, DisplayLettersVideos::class.java))
+             startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))
 
 
         }

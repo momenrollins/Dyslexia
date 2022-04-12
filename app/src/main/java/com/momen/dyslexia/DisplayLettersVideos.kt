@@ -55,7 +55,7 @@ class DisplayLettersVideos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_letters_videos)
-        index = intent.getIntExtra("actvtyNum", 26)
+        index = intent.getIntExtra("position", 0)
         action(index)
 
             replayBtn.setOnClickListener {

@@ -50,12 +50,45 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.lv_27,
         R.raw.lv_28
     )
+    var tanween_videos = intArrayOf(
+        R.raw.tanwen_v_1,
+        R.raw.tanwen_v_2,
+        R.raw.tanwen_v_3,
+        R.raw.tanwen_v_4,
+        R.raw.tanwen_v_5,
+        R.raw.tanwen_v_6,
+        R.raw.tanwen_v_7,
+        R.raw.tanwen_v_8,
+        R.raw.tanwen_v_9,
+        R.raw.tanwen_v_10,
+        R.raw.tanwen_v_11,
+        R.raw.tanwen_v_12,
+        R.raw.tanwen_v_13,
+        R.raw.tanwen_v_14,
+        R.raw.tanwen_v_15,
+        R.raw.tanwen_v_16,
+        R.raw.tanwen_v_17,
+        R.raw.tanwen_v_18,
+        R.raw.tanwen_v_19,
+        R.raw.tanwen_v_20,
+        R.raw.tanwen_v_21,
+        R.raw.tanwen_v_22,
+        R.raw.tanwen_v_23,
+        R.raw.tanwen_v_24,
+        R.raw.tanwen_v_25,
+        R.raw.tanwen_v_26,
+        R.raw.tanwen_v_27,
+        R.raw.tanwen_v_28
+
+    )
     var index = 0
+    var type = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_letters_videos)
         index = intent.getIntExtra("position", 0)
+        type = intent.getStringExtra("type")!!
         action(index)
 
         replayBtn.setOnClickListener {
@@ -88,7 +121,9 @@ class DisplayLettersVideos : AppCompatActivity() {
             backBtn.visibility = View.VISIBLE
         }
 
-        path = "android.resource://" + packageName + "/" + videos[index]
+        if (type.equals("tanween"))
+            path = "android.resource://" + packageName + "/" + tanween_videos[index]
+        else path = "android.resource://" + packageName + "/" + videos[index]
         videoView!!.setVideoURI(Uri.parse(path))
         videoView!!.start()
         /*videoView!!.setOnCompletionListener {

@@ -17,6 +17,7 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".LettersActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".LettersImages"

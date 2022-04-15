@@ -10,8 +10,8 @@ class LettersActivity : AppCompatActivity() {
     var layoutManager: RecyclerView.LayoutManager? = null
     var lettersAdapter: LettersAdapter? = null
     var letters = arrayOf(
-        "أ : ألف ",
-        " ب: باء",
+        "أ: ألف",
+        "ب: باء",
         "ت: تاء",
         "ث: ثاء",
         "ج: جيم",
@@ -51,7 +51,7 @@ class LettersActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this, DisplayLettersVideos::class.java
-                ).putExtra("position", position)
+                ).putExtra("position", position).putExtra("type","3ady")
             )
         })
     }

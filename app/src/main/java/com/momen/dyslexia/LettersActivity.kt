@@ -47,11 +47,16 @@ class LettersActivity : AppCompatActivity() {
         recyclerView!!.setHasFixedSize(true)
         lettersAdapter = LettersAdapter(letters)
         recyclerView!!.adapter = lettersAdapter
+        val lvl = intent.getIntExtra("lvl", 0)
+        val type: String
+        if (lvl == 0)
+            type = "3ady"
+        else type = "tanween"
         lettersAdapter!!.setOnItemClickListener(LettersAdapter.OnItemClickListener { position ->
             startActivity(
                 Intent(
                     this, DisplayLettersVideos::class.java
-                ).putExtra("position", position).putExtra("type","3ady")
+                ).putExtra("position", position).putExtra("type", type)
             )
         })
     }

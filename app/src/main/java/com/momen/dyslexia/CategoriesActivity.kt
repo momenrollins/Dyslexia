@@ -20,12 +20,13 @@ class CategoriesActivity : AppCompatActivity() {
             if (position == 0)
                 startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
             else if (position == 1)
-                startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java))
+                startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java).putExtra("activity","1"))
             else if (position == 2)
-                startActivity(Intent(this@CategoriesActivity, LettersImages::class.java))
+                startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java).putExtra("activity","2"))
+//                startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))
 
-            else if (position == 3)
-             startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))
+         /*   else if (position == 3)
+             startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))*/
 
 
         }

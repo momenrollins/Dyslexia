@@ -31,6 +31,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
     ) {
 
         holder.levelText!!.text = levelTextArray[position]
+        if (levelTextArray.size==6)
         holder.levelCard!!.setOnClickListener {
             if (position == 0)
                 context.startActivity(
@@ -73,6 +74,14 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
             //)
             /*
                       )*/
+        }
+        else holder.levelCard!!.setOnClickListener {
+            context.startActivity(
+                Intent(
+                    context,
+                    LettersActivity::class.java
+                ).putExtra("lvl", position)
+            )
         }
     }
 

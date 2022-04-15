@@ -51,9 +51,7 @@ public class LettersImages extends AppCompatActivity {
             "غ غزالة/ غسالة", "ف / فراولة/ فراشة", "ق / قمر / قمح ", "ك / كلب / كرسي ",
             "ل / لمون / لبن ", "م / موز / مشمش ", "ن / نحلة/ نخلة", "ه / هدية/ هدهد ", "واو / وردة/ ولد ", "ي / يد / يمامة",};
 
-    int[] lettersSounds = {R.raw.vo_1, R.raw.vo_2, R.raw.vo_3, R.raw.vo_4, R.raw.vo_5, R.raw.vo_6, R.raw.vo_7, R.raw.vo_8, R.raw.vo_9, R.raw.vo_10, R.raw.vo_11,
-            R.raw.vo_12, R.raw.vo_13, R.raw.vo_14, R.raw.vo_15, R.raw.vo_16, R.raw.vo_17, R.raw.vo_18, R.raw.vo_19, R.raw.vo_20, R.raw.vo_21, R.raw.vo_22,
-            R.raw.vo_23, R.raw.vo_24, R.raw.vo_25, R.raw.vo_26, R.raw.vo_27};
+    int[] lettersSounds = {};
     private RecyclerView rvWords;
     private LettersImagesAdapter adapter;
 

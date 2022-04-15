@@ -13,6 +13,6 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="2"
         tools:listitem="@layout/item_letters" />
 </androidx.constraintlayout.widget.ConstraintLayout>

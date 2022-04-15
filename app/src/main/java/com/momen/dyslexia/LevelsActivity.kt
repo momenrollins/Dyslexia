@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
@@ -20,20 +21,32 @@ class LevelsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_levels)
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
-        val levels = ArrayList<String>()
-        levels.add("المستوى الأول")
-        levels.add("المستوى الثاني")
-        levels.add("المستوى الثالث")
-        levels.add("المستوى الرابع")
-        levels.add("المستوى الخامس")
-        levels.add("المستوى السادس")
 
+        val activity = intent.getStringExtra("activity")
+
+        val levels = ArrayList<String>()
+        if (activity == "1") {
+            levels.add("المستوى الأول")
+            levels.add("المستوى الثاني")
+            levels.add("المستوى الثالث")
+            levels.add("المستوى الرابع")
+            levels.add("المستوى الخامس")
+            levels.add("المستوى السادس")
+        } else {
+            levels.add("تعليم  الطفل الحروف الابجديه واصواتها")
+            levels.add("تعليم الطفل دمج الحروف وتكوين كلمه")
+            levels.add("تعليم الطفل دمج الكلمات وتكوين جمله")
+            levels.add("تعليم الطفل قصه قصيره")
+            levels.add("تعليم الطفل الفهم القراءي")
+            fab.visibility = GONE
+        }
         fab.setOnClickListener {
-openDialog()
+            openDialog()
         }
         level_recycler.setLayoutManager(LinearLayoutManager(this))
         level_recycler.setAdapter(LevelAdapter(levels, this))
     }
+
     private fun openDialog() {
         val dialog = Dialog(this)
         dialog.setTitle("النتائج")

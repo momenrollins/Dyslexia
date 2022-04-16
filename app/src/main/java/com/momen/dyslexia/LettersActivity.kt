@@ -39,19 +39,35 @@ class LettersActivity : AppCompatActivity() {
         "و: واو",
         "ي: ياء"
     )
-
+    var videos_levels = arrayOf(
+        "النشاط الاول",
+        "النشاط الثانى",
+        "النشاط الثالث")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_letters)
         recyclerView = findViewById(R.id.activity_recycler)
         recyclerView!!.setHasFixedSize(true)
-        lettersAdapter = LettersAdapter(letters)
-        recyclerView!!.adapter = lettersAdapter
+
         val lvl = intent.getIntExtra("lvl", 0)
-        val type: String
-        if (lvl == 0)
+        var type=""
+        if (lvl == 0){
             type = "3ady"
-        else type = "tanween"
+            lettersAdapter = LettersAdapter(letters)
+
+        }
+        else if (lvl == 1) {
+            lettersAdapter = LettersAdapter(letters)
+            type = "tanween"
+        }else if (lvl == 2) {
+            lettersAdapter = LettersAdapter(videos_levels)
+            type = "learn"
+        }
+
+
+
+        recyclerView!!.adapter = lettersAdapter
+
         lettersAdapter!!.setOnItemClickListener(LettersAdapter.OnItemClickListener { position ->
             startActivity(
                 Intent(

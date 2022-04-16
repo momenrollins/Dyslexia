@@ -43,6 +43,12 @@ class LettersActivity : AppCompatActivity() {
         "النشاط الاول",
         "النشاط الثانى",
         "النشاط الثالث")
+    var videos_story= arrayOf(
+        "النشاط الاول",
+        "النشاط الثانى",
+        "النشاط الثالث",
+        "النشاط الرابع"
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_letters)
@@ -62,6 +68,9 @@ class LettersActivity : AppCompatActivity() {
         }else if (lvl == 2) {
             lettersAdapter = LettersAdapter(videos_levels)
             type = "learn"
+        }else if (lvl == 3) {
+            lettersAdapter = LettersAdapter(videos_story)
+            type = "story"
         }
 
 

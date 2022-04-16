@@ -86,6 +86,13 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.secand_v,
         R.raw.thaird_v
     )
+    var videos_stories = intArrayOf(
+        R.raw.story_v1,
+        R.raw.story_v2,
+        R.raw.story_v3,
+        R.raw.story_v4
+    )
+
     var index = 0
     var type = ""
 
@@ -124,9 +131,13 @@ class DisplayLettersVideos : AppCompatActivity() {
             backBtn.visibility = View.VISIBLE
         }
         if (type.equals("learn")) {
-            if (index == videos_learn.size - 1) {
+            if (index == videos_learn.size - 1)
                 nextBtn.visibility = View.INVISIBLE
-            }
+
+        } else if (type.equals("story")) {
+            if (index == videos_stories.size - 1)
+                nextBtn.visibility = View.INVISIBLE
+
         } else {
             if (index == videos.size - 1) {
                 nextBtn.visibility = View.INVISIBLE
@@ -140,6 +151,8 @@ class DisplayLettersVideos : AppCompatActivity() {
             path = "android.resource://" + packageName + "/" + tanween_videos[index]
         else if (type.equals("learn"))
             path = "android.resource://" + packageName + "/" + videos_learn[index]
+        else if (type.equals("story"))
+            path = "android.resource://" + packageName + "/" + videos_stories[index]
         videoView!!.setVideoURI(Uri.parse(path))
         videoView!!.start()
         /*videoView!!.setOnCompletionListener {

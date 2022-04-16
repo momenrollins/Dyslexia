@@ -81,6 +81,7 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.secand_v,
         R.raw.thaird_v
     )
+
     var arrangeList = intArrayOf(
         R.drawable.p1,
         R.drawable.p2,
@@ -90,7 +91,10 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.drawable.p6,
         R.drawable.p7,
         R.drawable.p8,
-        R.raw.thaird_v
+        R.raw.story_v1,
+        R.raw.story_v2,
+        R.raw.story_v3,
+        R.raw.story_v4
     )
     var index = 0
     var type = ""
@@ -130,9 +134,13 @@ class DisplayLettersVideos : AppCompatActivity() {
             backBtn.visibility = View.VISIBLE
         }
         if (type.equals("learn")) {
-            if (index == videos_learn.size - 1) {
+            if (index == videos_learn.size - 1)
                 nextBtn.visibility = View.INVISIBLE
-            }
+
+        } else if (type.equals("story")) {
+            if (index == videos_stories.size - 1)
+                nextBtn.visibility = View.INVISIBLE
+
         } else {
             if (index == videos.size - 1) {
                 nextBtn.visibility = View.INVISIBLE

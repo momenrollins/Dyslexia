@@ -34,6 +34,7 @@ class LevelsActivity : AppCompatActivity() {
             levels.add("المستوى السادس")
         } else {
             levels.add("تعليم  الطفل الحروف الابجديه واصواتها")
+            levels.add("تعليم الحركات الضمه والفتحه والكسره")
             levels.add("تعليم الطفل دمج الحروف وتكوين كلمه")
             levels.add("تعليم الطفل دمج الكلمات وتكوين جمله")
             levels.add("تعليم الطفل قصه قصيره")

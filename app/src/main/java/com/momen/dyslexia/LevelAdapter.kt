@@ -31,50 +31,51 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
     ) {
 
         holder.levelText!!.text = levelTextArray[position]
-        if (levelTextArray.size==6)
-        holder.levelCard!!.setOnClickListener {
-            if (position == 0)
-                context.startActivity(
+        if (levelTextArray.contains("المستوى الأول"))
+            holder.levelCard!!.setOnClickListener {
+                if (position == 0)
+                    context.startActivity(
+                        Intent(
+                            context,
+                            LettersRecord::class.java
+                        ).putExtra("index", position)
+                    )
+                else if (position == 1) context.startActivity(
                     Intent(
                         context,
-                        LettersRecord::class.java
+                        Level1Activity::class.java
                     ).putExtra("index", position)
                 )
-            else if (position == 1) context.startActivity(
-                Intent(
-                    context,
-                    Level1Activity::class.java
-                ).putExtra("index", position)
-            )
-            else if (position == 2) context.startActivity(
-                Intent(
-                    context,
-                    WordsActivity::class.java
-                ).putExtra("index", position)
-            )
-            else if (position == 3) context.startActivity(
-                Intent(
-                    context,
-                    SelectLetter::class.java
-                ).putExtra("index", position)
-            )
-            else if (position == 4) context.startActivity(
-                Intent(
-                    context,
-                    OrderWordsActivity::class.java
-                ).putExtra("index", position)
-
-            ) else {
-                context.startActivity(
+                else if (position == 2) context.startActivity(
                     Intent(
                         context,
-                        ChooseActivity::class.java
-                    ).putExtra("index", position))
+                        WordsActivity::class.java
+                    ).putExtra("index", position)
+                )
+                else if (position == 3) context.startActivity(
+                    Intent(
+                        context,
+                        SelectLetter::class.java
+                    ).putExtra("index", position)
+                )
+                else if (position == 4) context.startActivity(
+                    Intent(
+                        context,
+                        OrderWordsActivity::class.java
+                    ).putExtra("index", position)
+
+                ) else {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            ChooseActivity::class.java
+                        ).putExtra("index", position)
+                    )
+                }
+                //)
+                /*
+                          )*/
             }
-            //)
-            /*
-                      )*/
-        }
         else holder.levelCard!!.setOnClickListener {
             context.startActivity(
                 Intent(

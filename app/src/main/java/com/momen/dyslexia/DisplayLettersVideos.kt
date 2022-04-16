@@ -2,13 +2,8 @@ package com.momen.dyslexia
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.VideoView
-import android.widget.LinearLayout
-import android.widget.ImageButton
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import com.momen.dyslexia.R
 import kotlinx.android.synthetic.main.activity_display_letters_videos.*
 
 class DisplayLettersVideos : AppCompatActivity() {
@@ -86,13 +81,21 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.secand_v,
         R.raw.thaird_v
     )
-    var videos_stories = intArrayOf(
+
+    var arrangeList = intArrayOf(
+        R.drawable.p1,
+        R.drawable.p2,
+        R.drawable.p3,
+        R.drawable.p4,
+        R.drawable.p5,
+        R.drawable.p6,
+        R.drawable.p7,
+        R.drawable.p8,
         R.raw.story_v1,
         R.raw.story_v2,
         R.raw.story_v3,
         R.raw.story_v4
     )
-
     var index = 0
     var type = ""
 
@@ -144,17 +147,27 @@ class DisplayLettersVideos : AppCompatActivity() {
             }
         }
 
-
-        if (type.equals("3ady"))
-            path = "android.resource://" + packageName + "/" + videos[index]
-        else if (type.equals("tanween"))
-            path = "android.resource://" + packageName + "/" + tanween_videos[index]
-        else if (type.equals("learn"))
-            path = "android.resource://" + packageName + "/" + videos_learn[index]
-        else if (type.equals("story"))
-            path = "android.resource://" + packageName + "/" + videos_stories[index]
-        videoView!!.setVideoURI(Uri.parse(path))
-        videoView!!.start()
+        if (type == "arrange" && index < 8) {
+            replayBtn.visibility = View.INVISIBLE
+            imageView.visibility = View.VISIBLE
+            videoView.visibility = View.INVISIBLE
+            imageView.setImageResource(arrangeList[index])
+        } else {
+            replayBtn.visibility = View.VISIBLE
+            videoView.visibility = View.VISIBLE
+            imageView.visibility = View.INVISIBLE
+            if (type.equals("3ady"))
+                path = "android.resource://" + packageName + "/" + videos[index]
+            else if (type.equals("tanween"))
+                path = "android.resource://" + packageName + "/" + tanween_videos[index]
+            else if (type.equals("learn"))
+                path = "android.resource://" + packageName + "/" + videos_learn[index]
+            else if (type.equals("arrange")) {
+                path = "android.resource://" + packageName + "/" + arrangeList[index]
+            }
+            videoView!!.setVideoURI(Uri.parse(path))
+            videoView!!.start()
+        }
         /*videoView!!.setOnCompletionListener {
          options!!.visibility = View.VISIBLE
         }*/

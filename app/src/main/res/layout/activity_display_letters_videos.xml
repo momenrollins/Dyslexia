@@ -15,37 +15,43 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/options"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:visibility="visible"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/purple_700"
             android:src="@drawable/ic_baseline_navigate_before_24" />
 
         <ImageButton
             android:id="@+id/replayBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="@color/purple_700"
             android:src="@drawable/ic_baseline_replay_24" />
 
         <ImageButton
             android:id="@+id/nextBtn"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/purple_700"
             android:src="@drawable/ic_baseline_navigate_next_24" />
     </LinearLayout>
 </RelativeLayout>

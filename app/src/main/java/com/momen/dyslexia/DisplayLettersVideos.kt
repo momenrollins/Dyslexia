@@ -81,6 +81,11 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.tanwen_v_28
 
     )
+    var videos_learn = intArrayOf(
+        R.raw.first_v,
+        R.raw.secand_v,
+        R.raw.thaird_v
+    )
     var index = 0
     var type = ""
 
@@ -114,16 +119,27 @@ class DisplayLettersVideos : AppCompatActivity() {
     private fun action(index: Int) {
         if (index == 0) {
             backBtn.visibility = View.INVISIBLE
-        } else if (index == videos.size - 1) {
-            nextBtn.visibility = View.INVISIBLE
         } else {
             nextBtn.visibility = View.VISIBLE
             backBtn.visibility = View.VISIBLE
         }
+        if (type.equals("learn")) {
+            if (index == videos_learn.size - 1) {
+                nextBtn.visibility = View.INVISIBLE
+            }
+        } else {
+            if (index == videos.size - 1) {
+                nextBtn.visibility = View.INVISIBLE
+            }
+        }
 
-        if (type.equals("tanween"))
+
+        if (type.equals("3ady"))
+            path = "android.resource://" + packageName + "/" + videos[index]
+        else if (type.equals("tanween"))
             path = "android.resource://" + packageName + "/" + tanween_videos[index]
-        else path = "android.resource://" + packageName + "/" + videos[index]
+        else if (type.equals("learn"))
+            path = "android.resource://" + packageName + "/" + videos_learn[index]
         videoView!!.setVideoURI(Uri.parse(path))
         videoView!!.start()
         /*videoView!!.setOnCompletionListener {

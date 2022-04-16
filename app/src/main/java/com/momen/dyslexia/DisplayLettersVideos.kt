@@ -137,8 +137,8 @@ class DisplayLettersVideos : AppCompatActivity() {
             if (index == videos_learn.size - 1)
                 nextBtn.visibility = View.INVISIBLE
 
-        } else if (type.equals("story")) {
-            if (index == videos_stories.size - 1)
+        } else if (type.equals("arrange")) {
+            if (index == arrangeList.size - 1)
                 nextBtn.visibility = View.INVISIBLE
 
         } else {

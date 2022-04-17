@@ -127,6 +127,22 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.drawable.st27,
         R.drawable.st28,
     )
+    var story2List = intArrayOf(
+        R.drawable.s_img1,
+        R.drawable.s_img2,
+        R.drawable.s_img3,
+        R.drawable.s_img4,
+        R.drawable.s_img5,
+        R.drawable.s_img6,
+        R.drawable.s_img7,
+        R.drawable.s_img8,
+        R.drawable.s_img9,
+        R.drawable.s_img10,
+        R.drawable.s_img11,
+        R.drawable.s_img12,
+        R.drawable.s_img13,
+        R.drawable.s_img14,
+    )
     var index = 0
     var type = ""
     var story = 0
@@ -188,6 +204,13 @@ class DisplayLettersVideos : AppCompatActivity() {
             else {
                 if (story == 1)
                     imageView.setImageResource(story1List[index])
+                if (story == 2) {
+                    if (index == story2List.size - 1) {
+                        nextBtn.visibility = View.INVISIBLE
+                    }
+                    imageView.setImageResource(story2List[index])
+
+                }
             }
         } else {
             replayBtn.visibility = View.VISIBLE

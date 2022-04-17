@@ -137,7 +137,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 Intent(
                     context,
                     LettersActivity::class.java
-                ).putExtra("lvl", position)
+                ).putExtra("lvl", position).putExtra("story",2)
             )
         })
         button_3.setOnClickListener(View.OnClickListener {

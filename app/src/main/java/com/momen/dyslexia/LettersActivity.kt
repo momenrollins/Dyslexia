@@ -2,6 +2,7 @@ package com.momen.dyslexia
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
@@ -44,6 +45,24 @@ class LettersActivity : AppCompatActivity() {
         "النشاط الثانى",
         "النشاط الثالث"
     )
+    var story_l2 = arrayOf(
+        "قصة 1",
+        "قصة 2",
+        "قصة 3",
+        "قصة 4",
+        "قصة 5",
+        "قصة 6",
+        "قصة 7",
+        "قصة 8",
+        "قصة 9",
+        "قصة 10",
+        "قصة 11",
+        "قصة 12",
+        "قصة 13",
+        "قصة 14",
+
+
+        )
 
     var arrange_levels = arrayOf(
         "صورة 1",
@@ -81,9 +100,15 @@ class LettersActivity : AppCompatActivity() {
             lettersAdapter = LettersAdapter(arrange_levels)
             type = "arrange"
         } else if (lvl == 4) {
-            lettersAdapter = LettersAdapter(letters)
             type = "story"
-            story = intent.getIntExtra("story",0)!!
+            story = intent.getIntExtra("story", 0)!!
+            Log.d("TAG", "onCreate:story ${story} ")
+            if (story == 1)
+                lettersAdapter = LettersAdapter(letters)
+            else if (story == 2)
+                lettersAdapter = LettersAdapter(story_l2)
+
+
         }
 
         recyclerView!!.adapter = lettersAdapter

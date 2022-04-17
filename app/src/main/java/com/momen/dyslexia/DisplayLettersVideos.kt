@@ -1,5 +1,6 @@
 package com.momen.dyslexia
 
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -96,14 +97,45 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.story_v3,
         R.raw.story_v4
     )
+    var story1List = intArrayOf(
+        R.drawable.st1,
+        R.drawable.st2,
+        R.drawable.st3,
+        R.drawable.st4,
+        R.drawable.st5,
+        R.drawable.st6,
+        R.drawable.st7,
+        R.drawable.st8,
+        R.drawable.st9,
+        R.drawable.st10,
+        R.drawable.st11,
+        R.drawable.st12,
+        R.drawable.st13,
+        R.drawable.st14,
+        R.drawable.st15,
+        R.drawable.st16,
+        R.drawable.st17,
+        R.drawable.st18,
+        R.drawable.st19,
+        R.drawable.st20,
+        R.drawable.st21,
+        R.drawable.st22,
+        R.drawable.st23,
+        R.drawable.st24,
+        R.drawable.st25,
+        R.drawable.st26,
+        R.drawable.st27,
+        R.drawable.st28,
+    )
     var index = 0
     var type = ""
-
+    var story = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_letters_videos)
         index = intent.getIntExtra("position", 0)
         type = intent.getStringExtra("type")!!
+        story = intent.getIntExtra("story", 0)
         action(index)
 
         replayBtn.setOnClickListener {
@@ -147,11 +179,16 @@ class DisplayLettersVideos : AppCompatActivity() {
             }
         }
 
-        if (type == "arrange" && index < 8) {
+        if (type == "arrange" && index < 8 || type == "story") {
             replayBtn.visibility = View.INVISIBLE
             imageView.visibility = View.VISIBLE
             videoView.visibility = View.INVISIBLE
-            imageView.setImageResource(arrangeList[index])
+            if (type == "arrange")
+                imageView.setImageResource(arrangeList[index])
+            else {
+                if (story == 1)
+                    imageView.setImageResource(story1List[index])
+            }
         } else {
             replayBtn.visibility = View.VISIBLE
             videoView.visibility = View.VISIBLE

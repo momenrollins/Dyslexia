@@ -80,20 +80,19 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
         else {
 
 
-                holder.levelCard!!.setOnClickListener {
-
-                    if (position == 4){
-                        openDialog(3)
-                    }else {
-                        context.startActivity(
-                            Intent(
-                                context,
-                                LettersActivity::class.java
-                            ).putExtra("lvl", position)
-                        )
-                    }
-
+            holder.levelCard!!.setOnClickListener {
+                if (position == 4) {
+                    openDialog(4)
+                } else {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            LettersActivity::class.java
+                        ).putExtra("lvl", position)
+                    )
                 }
+
+            }
         }
     }
 
@@ -110,7 +109,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
         return position
     }
 
-    private fun openDialog(position:Int) {
+    private fun openDialog(position: Int) {
         val dialog = Dialog(context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
@@ -130,7 +129,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 Intent(
                     context,
                     LettersActivity::class.java
-                ).putExtra("lvl", position)
+                ).putExtra("lvl", position).putExtra("story",1)
             )
         })
         button_2.setOnClickListener(View.OnClickListener {
@@ -141,12 +140,14 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 ).putExtra("lvl", position)
             )
         })
-        button_3.setOnClickListener(View.OnClickListener {  context.startActivity(
-            Intent(
-                context,
-                LettersActivity::class.java
-            ).putExtra("lvl", position)
-        ) })
+        button_3.setOnClickListener(View.OnClickListener {
+            context.startActivity(
+                Intent(
+                    context,
+                    LettersActivity::class.java
+                ).putExtra("lvl", position)
+            )
+        })
         dialog.show()
     }
 

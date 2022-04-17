@@ -59,7 +59,7 @@ class LettersActivity : AppCompatActivity() {
         "فيديو 3",
         "فيديو 4",
     )
-
+    var story = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_letters)
@@ -71,7 +71,6 @@ class LettersActivity : AppCompatActivity() {
         if (lvl == 0) {
             type = "3ady"
             lettersAdapter = LettersAdapter(letters)
-
         } else if (lvl == 1) {
             lettersAdapter = LettersAdapter(letters)
             type = "tanween"
@@ -81,6 +80,10 @@ class LettersActivity : AppCompatActivity() {
         } else if (lvl == 3) {
             lettersAdapter = LettersAdapter(arrange_levels)
             type = "arrange"
+        } else if (lvl == 4) {
+            lettersAdapter = LettersAdapter(letters)
+            type = "story"
+            story = intent.getIntExtra("story",0)!!
         }
 
         recyclerView!!.adapter = lettersAdapter
@@ -88,7 +91,7 @@ class LettersActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this, DisplayLettersVideos::class.java
-                ).putExtra("position", position).putExtra("type", type)
+                ).putExtra("position", position).putExtra("type", type).putExtra("story", story)
             )
         })
     }

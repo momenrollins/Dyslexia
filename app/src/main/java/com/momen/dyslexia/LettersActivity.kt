@@ -54,7 +54,10 @@ class LettersActivity : AppCompatActivity() {
         "صورة 6",
         "صورة 7",
         "صورة 8",
-        "فيديو 1", "فيديو 2", "فيديو 3", "فيديو 4",
+        "فيديو 1",
+        "فيديو 2",
+        "فيديو 3",
+        "فيديو 4",
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 
 
 class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) :
@@ -76,13 +77,23 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 /*
                           )*/
             }
-        else holder.levelCard!!.setOnClickListener {
-            context.startActivity(
-                Intent(
-                    context,
-                    LettersActivity::class.java
-                ).putExtra("lvl", position)
-            )
+        else {
+
+
+                holder.levelCard!!.setOnClickListener {
+
+                    if (position == 4){
+                        openDialog(3)
+                    }else {
+                        context.startActivity(
+                            Intent(
+                                context,
+                                LettersActivity::class.java
+                            ).putExtra("lvl", position)
+                        )
+                    }
+
+                }
         }
     }
 
@@ -98,6 +109,47 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
     override fun getItemViewType(position: Int): Int {
         return position
     }
+
+    private fun openDialog(position:Int) {
+        val dialog = Dialog(context)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.story_item)
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(dialog.getWindow()!!.getAttributes())
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT
+//                lp.height = 500
+        dialog.show()
+        dialog.getWindow()!!.setAttributes(lp)
+        val button_1: MaterialCardView = dialog.findViewById<MaterialCardView>(R.id.short_story)
+        val button_2: MaterialCardView = dialog.findViewById<MaterialCardView>(R.id.full_story)
+        val button_3: MaterialCardView = dialog.findViewById<MaterialCardView>(R.id.tafa3olya)
+
+        button_1.setOnClickListener(View.OnClickListener {
+            context.startActivity(
+                Intent(
+                    context,
+                    LettersActivity::class.java
+                ).putExtra("lvl", position)
+            )
+        })
+        button_2.setOnClickListener(View.OnClickListener {
+            context.startActivity(
+                Intent(
+                    context,
+                    LettersActivity::class.java
+                ).putExtra("lvl", position)
+            )
+        })
+        button_3.setOnClickListener(View.OnClickListener {  context.startActivity(
+            Intent(
+                context,
+                LettersActivity::class.java
+            ).putExtra("lvl", position)
+        ) })
+        dialog.show()
+    }
+
 
     inner class ViewHolderLevel(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var levelText: TextView? = null

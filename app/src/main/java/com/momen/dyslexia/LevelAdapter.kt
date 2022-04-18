@@ -135,17 +135,15 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
         button_2.setOnClickListener(View.OnClickListener {
             context.startActivity(
                 Intent(
-                    context,
-                    LettersActivity::class.java
-                ).putExtra("lvl", position).putExtra("story",2)
+                    context, DisplayLettersVideos::class.java
+                ).putExtra("position", 0).putExtra("type", "story").putExtra("story", 2)
             )
         })
         button_3.setOnClickListener(View.OnClickListener {
             context.startActivity(
                 Intent(
-                    context,
-                    LettersActivity::class.java
-                ).putExtra("lvl", position)
+                    context, DisplayLettersVideos::class.java
+                ).putExtra("position", 0).putExtra("type", "story").putExtra("story", 3)
             )
         })
         dialog.show()

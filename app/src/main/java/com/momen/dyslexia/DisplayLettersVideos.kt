@@ -152,6 +152,8 @@ class DisplayLettersVideos : AppCompatActivity() {
         index = intent.getIntExtra("position", 0)
         type = intent.getStringExtra("type")!!
         story = intent.getIntExtra("story", 0)
+        if (type == "arrange")
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         action(index)
 
         replayBtn.setOnClickListener {
@@ -168,9 +170,6 @@ class DisplayLettersVideos : AppCompatActivity() {
             action(index)
 
         }
-
-
-        //  initView()
     }
 
 
@@ -189,13 +188,15 @@ class DisplayLettersVideos : AppCompatActivity() {
             if (index == arrangeList.size - 1)
                 nextBtn.visibility = View.INVISIBLE
 
+        } else if (type.equals("story") && story == 3) {
+            nextBtn.visibility = View.INVISIBLE
         } else {
             if (index == videos.size - 1) {
                 nextBtn.visibility = View.INVISIBLE
             }
         }
 
-        if (type == "arrange" && index < 8 || type == "story") {
+        if (type == "arrange" && index < 8 || type == "story" && story != 3) {
             replayBtn.visibility = View.INVISIBLE
             imageView.visibility = View.VISIBLE
             videoView.visibility = View.INVISIBLE
@@ -224,22 +225,14 @@ class DisplayLettersVideos : AppCompatActivity() {
                 path = "android.resource://" + packageName + "/" + videos_learn[index]
             else if (type.equals("arrange")) {
                 path = "android.resource://" + packageName + "/" + arrangeList[index]
+            } else if (type.equals("story")) {
+                path = "android.resource://" + packageName + "/" + R.raw.story3
             }
+
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             videoView!!.setVideoURI(Uri.parse(path))
             videoView!!.start()
         }
-        /*videoView!!.setOnCompletionListener {
-         options!!.visibility = View.VISIBLE
-        }*/
-
 
     }
-    /* private fun initView() {
-         videoView = findViewById<View>(R.id.videoView) as VideoView
-         finishBtn = findViewById<View>(R.id.finishBtn) as Button
-         options = findViewById<View>(R.id.options) as LinearLayout
-         backBtn = findViewById<View>(R.id.backBtn) as ImageButton
-         replayBtn = findViewById<View>(R.id.replayBtn) as ImageButton
-         nextBtn = findViewById<View>(R.id.nextBtn) as ImageButton
-     }*/
 }

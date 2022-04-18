@@ -45,6 +45,10 @@ class LettersActivity : AppCompatActivity() {
         "النشاط الثانى",
         "النشاط الثالث"
     )
+    var videos_fihm = arrayOf(
+        "النشاط الاول",
+        "النشاط الثانى",
+    )
     var story_l2 = arrayOf(
         "قصة 1",
         "قصة 2",
@@ -109,6 +113,9 @@ class LettersActivity : AppCompatActivity() {
                 lettersAdapter = LettersAdapter(story_l2)
 
 
+        }else if (lvl == 5){
+            lettersAdapter = LettersAdapter(videos_fihm)
+            type = "fihm"
         }
 
         recyclerView!!.adapter = lettersAdapter

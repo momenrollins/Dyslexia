@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_display_letters_videos.*
 
@@ -81,6 +82,10 @@ class DisplayLettersVideos : AppCompatActivity() {
         R.raw.first_v,
         R.raw.secand_v,
         R.raw.thaird_v
+    )
+    var videos_fihm = intArrayOf(
+        R.raw.fihm_v2,
+        R.raw.fihm_v1,
     )
 
     var arrangeList = intArrayOf(
@@ -174,6 +179,7 @@ class DisplayLettersVideos : AppCompatActivity() {
 
 
     private fun action(index: Int) {
+        Log.d("TAG", "action:tr ${type} ${index} ")
         if (index == 0) {
             backBtn.visibility = View.INVISIBLE
         } else {
@@ -190,6 +196,11 @@ class DisplayLettersVideos : AppCompatActivity() {
 
         } else if (type.equals("story") && story == 3) {
             nextBtn.visibility = View.INVISIBLE
+        } else if (type.equals("fihm")) {
+            if (index == videos_fihm.size - 1)
+                nextBtn.visibility = View.INVISIBLE
+            else nextBtn.visibility = View.VISIBLE
+
         } else {
             if (index == videos.size - 1) {
                 nextBtn.visibility = View.INVISIBLE
@@ -227,6 +238,8 @@ class DisplayLettersVideos : AppCompatActivity() {
                 path = "android.resource://" + packageName + "/" + arrangeList[index]
             } else if (type.equals("story")) {
                 path = "android.resource://" + packageName + "/" + R.raw.story3
+            } else if (type.equals("fihm")) {
+                path = "android.resource://" + packageName + "/" + videos_fihm[index]
             }
 
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

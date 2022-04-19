@@ -15,6 +15,18 @@ class ChooseActivity : AppCompatActivity() {
     var comingFrom = ""
     var imgList = intArrayOf(
         R.drawable.im_5_2,
+        R.drawable.kharof,
+        R.drawable.dop,
+        R.drawable.girl,
+        R.drawable.zarafa,
+        R.drawable.dagaga,
+        R.drawable.plane,
+        R.drawable.hera,
+        R.drawable.feel,
+        R.drawable.alp,
+        R.drawable.kora,
+        R.drawable.far,
+        R.drawable.regl,
         R.drawable.st2)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,6 +123,126 @@ class ChooseActivity : AppCompatActivity() {
                 "ز",
                 "",
                 "ج"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ج",
+                "ح",
+                "خ",
+                "",
+                "خ"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ق",
+                "د",
+                "ث",
+                "",
+                "د"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ت",
+                "ن",
+                "ب",
+                "",
+                "ب"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ز",
+                "ص",
+                "س",
+                "",
+                "ز"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ج",
+                "د",
+                "ة",
+                "",
+                "د"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "غ",
+                "ط",
+                "ر",
+                "",
+                "ط"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "هـ",
+                "ي",
+                "س",
+                "",
+                "هـ"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ب",
+                "ف",
+                "س",
+                "",
+                "ف"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ق",
+                "ي",
+                "س",
+                "",
+                "ق"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ت",
+                "ا",
+                "ك",
+                "",
+                "ك"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ف",
+                "ي",
+                "س",
+                "",
+                "ف"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ث",
+                "س",
+                "ر",
+                "",
+                "ر"
             )
         )
     }

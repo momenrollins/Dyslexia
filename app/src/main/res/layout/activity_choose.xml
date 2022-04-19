@@ -34,8 +34,8 @@
             <ImageView
                 android:id="@+id/paraImg"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
+                android:layout_height="296dp"
+                android:scaleType="fitXY"
                 android:visibility="gone" />
         </com.google.android.material.card.MaterialCardView>
 

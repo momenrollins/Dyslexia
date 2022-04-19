@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.Window
@@ -23,7 +24,7 @@ class LevelsActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
 
         val activity = intent.getStringExtra("activity")
-
+        Log.d("TAG", "onCreate: ac")
         val levels = ArrayList<String>()
         if (activity == "1") {
             levels.add("المستوى الأول")
@@ -32,13 +33,21 @@ class LevelsActivity : AppCompatActivity() {
             levels.add("المستوى الرابع")
             levels.add("المستوى الخامس")
             levels.add("المستوى السادس")
-        } else {
-            levels.add("تعليم  الطفل الحروف الابجديه واصواتها")
-            levels.add("تعليم الحركات الضمه والفتحه والكسره")
+        } else if (activity == "2") {
+            levels.add("تعليم الطفل الحروف الابجدية واصواتها")
+            levels.add("تعليم الحركات الضمة والفتحة والكسره")
             levels.add("تعليم الطفل دمج الحروف وتكوين كلمه")
             levels.add("تعليم الطفل دمج الكلمات وتكوين جمله")
-            levels.add("تعليم الطفل قصه قصيره")
+            levels.add("تعليم الطفل قصة قصيره")
             levels.add("تعليم الطفل الفهم القراءي")
+            fab.visibility = GONE
+        } else {
+            levels.add("التعرف على الحرف الاول والاوسط من الكلمة والتميز بين الحروف المتشابهه")
+            levels.add("التميز بين الحركات الضمة والفتحة والكسره")
+            levels.add("القدرة على تكوين كلمة من حروف")
+            levels.add("القدرة على تكوين جملة من كلمات")
+            levels.add("القدرة على كتابة قصة قصيره")
+            levels.add("القدرة على الفهم القرائي")
             fab.visibility = GONE
         }
         fab.setOnClickListener {

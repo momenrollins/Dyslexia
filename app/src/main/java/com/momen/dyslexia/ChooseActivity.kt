@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_choose.*
 
@@ -11,11 +12,50 @@ class ChooseActivity : AppCompatActivity() {
     val choosesList = ArrayList<ChooseModel>()
     var index = 0
     var degree = 0
+    var comingFrom = ""
+    var imgList = intArrayOf(
+        R.drawable.im_5_2,
+        R.drawable.st2)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose)
         sharedPreferences = getSharedPreferences("MyPREFERENCES", MODE_PRIVATE)
+        comingFrom = intent.getStringExtra("comingFrom")!!
         editor = sharedPreferences!!.edit()
+        if (comingFrom == "0") {
+            ans4.visibility = GONE
+            paraText.visibility = GONE
+            paraImg.visibility= VISIBLE
+            fillFirstLetters()
+        } else {
+            fillChoose()
+        }
+
+
+        showQuestion(choosesList[index], index)
+        ans1.setOnClickListener {
+            if (ans1.text == choosesList[index].realAns)
+                degree++
+            handleClick()
+        }
+        ans2.setOnClickListener {
+            if (ans2.text == choosesList[index].realAns)
+                degree++
+            handleClick()
+        }
+        ans3.setOnClickListener {
+            if (ans3.text == choosesList[index].realAns)
+                degree++
+            handleClick()
+        }
+        ans4.setOnClickListener {
+            if (ans4.text == choosesList[index].realAns)
+                degree++
+            handleClick()
+        }
+    }
+
+    private fun fillChoose() {
         choosesList.add(
             ChooseModel(
                 "الشيء التي تحبه ليلى هو",
@@ -60,28 +100,19 @@ class ChooseActivity : AppCompatActivity() {
                 "الطالبة المجتهدة"
             )
         )
+    }
 
-        showQuestion(choosesList[index])
-        ans1.setOnClickListener {
-            if (ans1.text == choosesList[index].realAns)
-                degree++
-            handleClick()
-        }
-        ans2.setOnClickListener {
-            if (ans2.text == choosesList[index].realAns)
-                degree++
-            handleClick()
-        }
-        ans3.setOnClickListener {
-            if (ans3.text == choosesList[index].realAns)
-                degree++
-            handleClick()
-        }
-        ans4.setOnClickListener {
-            if (ans4.text == choosesList[index].realAns)
-                degree++
-            handleClick()
-        }
+    private fun fillFirstLetters() {
+        choosesList.add(
+            ChooseModel(
+                "اختار الحرف الأول",
+                "ج",
+                "س",
+                "ز",
+                "",
+                "ج"
+            )
+        )
     }
 
     var sharedPreferences: SharedPreferences? = null
@@ -91,8 +122,8 @@ class ChooseActivity : AppCompatActivity() {
     private fun handleClick() {
         index++
 
-        if (index < 6)
-            showQuestion(choosesList[index])
+        if (index < choosesList.size)
+            showQuestion(choosesList[index],index)
         else {
             paraTv.visibility = GONE
             ans1.visibility = GONE
@@ -102,13 +133,17 @@ class ChooseActivity : AppCompatActivity() {
             questionTv.text = "عدد الاجابات الصحيحة: $degree \n" +
                     "عدد الاجابات الخاطئة: ${choosesList.size - degree}"
 
-            editor!!.putString("lvl6Deg", degree.toString() + " / " + (choosesList.size))
+            if (comingFrom == "0")
+                editor!!.putString("lvl1FinalDeg", degree.toString() + " / " + (choosesList.size))
+            else editor!!.putString("lvl6Deg", degree.toString() + " / " + (choosesList.size))
             editor!!.commit()
 
         }
     }
 
-    private fun showQuestion(chooseModel: ChooseModel) {
+    private fun showQuestion(chooseModel: ChooseModel, index: Int) {
+        if (comingFrom=="0")
+            paraImg.setImageResource(imgList[index])
         questionTv.text = chooseModel.question
         ans1.text = chooseModel.ans1
         ans2.text = chooseModel.ans2

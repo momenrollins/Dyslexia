@@ -70,19 +70,36 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                         Intent(
                             context,
                             ChooseActivity::class.java
-                        ).putExtra("index", position)
+                        ).putExtra("comingFrom", "1")
                     )
                 }
                 //)
                 /*
                           )*/
             }
-        else {
-
-
+        else if (levelTextArray.contains("تعليم الطفل الحروف الابجدية واصواتها")) {
             holder.levelCard!!.setOnClickListener {
                 if (position == 4) {
                     openDialog(4)
+                } else {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            LettersActivity::class.java
+                        ).putExtra("lvl", position)
+                    )
+                }
+
+            }
+        } else {
+            holder.levelCard!!.setOnClickListener {
+                if (position == 0) {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            ChooseActivity::class.java
+                        ).putExtra("comingFrom", "0")
+                    )
                 } else {
                     context.startActivity(
                         Intent(
@@ -129,7 +146,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                 Intent(
                     context,
                     LettersActivity::class.java
-                ).putExtra("lvl", position).putExtra("story",1)
+                ).putExtra("lvl", position).putExtra("story", 1)
             )
         })
         button_2.setOnClickListener(View.OnClickListener {

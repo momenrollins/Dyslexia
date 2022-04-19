@@ -19,16 +19,13 @@ class CategoriesActivity : AppCompatActivity() {
         val itemListiner = CategoriesAdapter.OnItemClickListener { position ->
             if (position == 0)
                 startActivity(Intent(this@CategoriesActivity, PDFActivity::class.java))
-            else if (position == 1)
-                startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java).putExtra("activity","1"))
-            else if (position == 2)
-                startActivity(Intent(this@CategoriesActivity, LevelsActivity::class.java).putExtra("activity","2"))
-//                startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))
-
-         /*   else if (position == 3)
-             startActivity(Intent(this@CategoriesActivity, LettersActivity::class.java))*/
-
-
+            else
+                startActivity(
+                    Intent(
+                        this@CategoriesActivity,
+                        LevelsActivity::class.java
+                    ).putExtra("activity", position.toString())
+                )
         }
         categoriesAdapter = CategoriesAdapter(itemListiner, categoriesList)
         cate_recycler.adapter = categoriesAdapter

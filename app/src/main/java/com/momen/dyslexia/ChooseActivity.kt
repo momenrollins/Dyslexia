@@ -26,8 +26,7 @@ class ChooseActivity : AppCompatActivity() {
         R.drawable.alp,
         R.drawable.kora,
         R.drawable.far,
-        R.drawable.regl,
-        R.drawable.st2)
+        R.drawable.regl)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose)

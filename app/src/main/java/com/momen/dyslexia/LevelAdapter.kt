@@ -98,14 +98,14 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                         Intent(
                             context,
                             ChooseActivity::class.java
-                        ).putExtra("comingFrom", "0")
+                        ).putExtra("comingFrom", "l0")
                     )
                 } else  if (position == 1) {
                     context.startActivity(
                         Intent(
                             context,
                             ChooseActivity::class.java
-                        ).putExtra("comingFrom", "1")
+                        ).putExtra("comingFrom", "l1")
                     )
                 }
 

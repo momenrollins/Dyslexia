@@ -32,6 +32,14 @@ class ChooseActivity : AppCompatActivity() {
         R.drawable.tmsaa7,
         R.drawable.tofa7a,
         R.drawable.crown,
+        R.drawable.envelope,
+        R.drawable.football,
+        R.drawable.news_anchor,
+        R.drawable.wristwatch,
+        R.drawable.soldier,
+        R.drawable.elephant,
+        R.drawable.water,
+        R.drawable.feather,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,19 +48,17 @@ class ChooseActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyPREFERENCES", MODE_PRIVATE)
         comingFrom = intent.getStringExtra("comingFrom")!!
         editor = sharedPreferences!!.edit()
-        if (comingFrom == "0" ) {
+        if (comingFrom == "l0") {
             ans4.visibility = GONE
             paraText.visibility = GONE
             paraImg.visibility = VISIBLE
             fillFirstLetters()
-        }else if (comingFrom == "1"){
+        } else if (comingFrom == "l1") {
             ans4.visibility = GONE
             paraText.visibility = GONE
             paraImg.visibility = VISIBLE
             fillFirstLettersL2()
-        }
-
-        else {
+        } else {
             fillChoose()
         }
 
@@ -259,12 +265,67 @@ class ChooseActivity : AppCompatActivity() {
             "تُ",
             "تَ",
         )
-
+        fillArray(
+            "..ـرف",
+            "ظِ",
+            "ظُ",
+            "ظَ",
+            "ظَ",
+        )
+        fillArray(
+            "...ـرة",
+            "كُـ",
+            "كِـ",
+            "كَـ",
+            "كُـ",
+        )
+        fillArray(
+            "مـ...ـيع",
+            "ذِ",
+            "ذَ",
+            "ذُ",
+            "ذِ",
+        )
+        fillArray(
+            "...ـاعة",
+            "سَـ",
+            "سُـ",
+            "سِـ",
+            "سَـ",
+        )
+        fillArray(
+            "...ـندي",
+            "جَـ",
+            "جُـ",
+            "جِـ",
+            "جُـ",
+        )
+        fillArray(
+            "...ـيل",
+            "فَـ",
+            "فُـ",
+            "فِـ",
+            "فِـ",
+        )
+        fillArray(
+            "...جاجة",
+            "ـز",
+            "زَ",
+            "زُ",
+            "زُ",
+        )
+        fillArray(
+            "...يشة",
+            "رَ",
+            "ـرْ",
+            "رِ",
+            "رِ",
+        )
 
     }
 
 
-    fun fillArray(Q: String, ans1: String, ans2: String, ans3: String, realAns: String) {
+    private fun fillArray(Q: String, ans1: String, ans2: String, ans3: String, realAns: String) {
         choosesList.add(
             ChooseModel(
                 Q,
@@ -297,16 +358,19 @@ class ChooseActivity : AppCompatActivity() {
 
             if (comingFrom == "0")
                 editor!!.putString("lvl1FinalDeg", degree.toString() + " / " + (choosesList.size))
-            else editor!!.putString("lvl6Deg", degree.toString() + " / " + (choosesList.size))
+            else editor!!.putString(
+                "lvl6Deg$comingFrom",
+                degree.toString() + " / " + (choosesList.size)
+            )
             editor!!.commit()
 
         }
     }
 
     private fun showQuestion(chooseModel: ChooseModel, index: Int) {
-        if (comingFrom == "0")
+        if (comingFrom == "l0")
             paraImg.setImageResource(imgList[index])
-        else if (comingFrom == "1")
+        else if (comingFrom == "l1")
             paraImg.setImageResource(imgListL2[index])
 
         questionTv.text = chooseModel.question

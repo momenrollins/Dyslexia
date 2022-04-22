@@ -100,7 +100,17 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                             ChooseActivity::class.java
                         ).putExtra("comingFrom", "0")
                     )
-                } else {
+                } else  if (position == 1) {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            ChooseActivity::class.java
+                        ).putExtra("comingFrom", "1")
+                    )
+                }
+
+
+                else {
                     context.startActivity(
                         Intent(
                             context,

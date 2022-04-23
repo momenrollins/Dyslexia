@@ -51,7 +51,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                     Intent(
                         context,
                         WordsActivity::class.java
-                    ).putExtra("index", position)
+                    ).putExtra("index", position).putExtra("commingFrom","keply")
                 )
                 else if (position == 3) context.startActivity(
                     Intent(
@@ -106,6 +106,13 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                             context,
                             ChooseActivity::class.java
                         ).putExtra("comingFrom", "l1")
+                    )
+                }else  if (position == 2) {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            WordsActivity::class.java
+                        ).putExtra("index", position).putExtra("commingFrom","bo3dy")
                     )
                 }
 

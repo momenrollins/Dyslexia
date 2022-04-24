@@ -19,8 +19,10 @@ import java.util.Random;
 import java.util.Set;
 
 public class OrderWordsActivity extends AppCompatActivity {
-    String[] listWords = {"يسبح السمك في الماء", "هذه سمكة صغيرة", "هي معلمة نشيطة", "هذا طير ازرق"};
-    int[] images = {R.drawable.swim_fish, R.drawable.small_fish, R.drawable.active_teacher, R.drawable.blue_baird};
+    String[] listWordsTest1 = {"يسبح السمك في الماء", "هذه سمكة صغيرة", "هي معلمة نشيطة", "هذا طير ازرق"};
+    String[] listWordsTest2 = {"هو ولد سعيد", "هو رجل قوى", "هذه وردة جميلة"};
+    int[] imagesTest1 = {R.drawable.swim_fish, R.drawable.small_fish, R.drawable.active_teacher, R.drawable.blue_baird};
+    int[] imagesTest2 = {R.drawable.boy, R.drawable.strong_man, R.drawable.flower};
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
     private LinearLayout linearLayout;
@@ -37,6 +39,8 @@ public class OrderWordsActivity extends AppCompatActivity {
     private Button nextWord;
     private TextView result;
     int index = 0;
+    String commingFrom = "";
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     @Override
@@ -46,49 +50,26 @@ public class OrderWordsActivity extends AppCompatActivity {
         initView();
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        splitT3Letters();
+        commingFrom = getIntent().getStringExtra("commingFrom");
+        if (commingFrom.equals("keply")) {
+            splitT3Letters(listWordsTest1, imagesTest1);
+
+        } else if (commingFrom.equals("bo3dy")) {
+            splitT3Letters(listWordsTest2, imagesTest2);
+
+        }
         nextWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] word = listWords[index].split(" ");
-                Log.d("TAG", "onClick: " + index + letter14.getText().toString().trim() + " " + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim());
+                String[] word ;
+                if (commingFrom.equals("keply")) {
+                    word = listWordsTest1[index].split(" ");
+                    nextStep(listWordsTest1, imagesTest1,word);
 
-                if (word.length == 3) {
-                    String _result = letter14.getText().toString().trim() + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
-                    Log.d("TAG", "onClick:result " + _result);
-                    Log.d("TAG", "onClick:result  " + listWords[index]);
-                    _result.replace(" ", "");
-                    if (_result.equals(listWords[index])) {
+                } else if (commingFrom.equals("bo3dy")) {
+                    word = listWordsTest2[index].split(" ");
 
-                        rightLetters.add(listWords[index]);
-
-
-                    } else {
-                        Log.d("TAG", "onClick:wrong   " + listWords[index]);
-
-                        wrongLetters.add(listWords[index]);
-
-                    }
-                    index = index + 1;
-
-                    splitT3Letters();
-
-                } else {
-                    String _result = letter14.getText().toString().trim() + " " + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
-
-                    if (_result.equals(listWords[index])) {
-
-                        Log.d("TAG", "onClick:innn  " + index);
-
-                        rightLetters.add(listWords[index]);
-
-
-                    } else {
-                        wrongLetters.add(listWords[index]);
-                    }
-                    index = index + 1;
-
-                    splitT3Letters();
+                    nextStep(listWordsTest2, imagesTest2,word);
 
                 }
 
@@ -98,8 +79,48 @@ public class OrderWordsActivity extends AppCompatActivity {
 
     }
 
+    public void  nextStep(String[] listWords, int[] images,String[] word){
+        if (word.length == 3) {
+            String _result = letter14.getText().toString().trim() + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
+            Log.d("TAG", "onClick:result " + _result);
+            Log.d("TAG", "onClick:result  " + listWords[index]);
+            _result.replace(" ", "");
+            if (_result.equals(listWords[index])) {
 
-    public void splitT3Letters() {
+                rightLetters.add(listWords[index]);
+
+
+            } else {
+                Log.d("TAG", "onClick:wrong   " + listWords[index]);
+
+                wrongLetters.add(listWords[index]);
+
+            }
+            index = index + 1;
+
+
+        } else {
+            String _result = letter14.getText().toString().trim() + " " + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
+
+            if (_result.equals(listWords[index])) {
+
+                Log.d("TAG", "onClick:innn  " + index);
+
+                rightLetters.add(listWords[index]);
+
+
+            } else {
+                wrongLetters.add(listWords[index]);
+            }
+            index = index + 1;
+
+
+        }
+        splitT3Letters(listWords, images);
+
+    }
+
+    public void splitT3Letters(String[] listWords, int[] images) {
         Log.d("TAG", "splitT3Letters: " + index);
 
         if (index >= listWords.length) {
@@ -122,9 +143,20 @@ public class OrderWordsActivity extends AppCompatActivity {
                 }
                 Set<String> set = new HashSet<String>();
                 set.addAll(wrongLetters);
-                editor.putStringSet("wrongLetters_l5",set);
-                editor.putString("lvl5Deg",rightLetters.size()  + " / " + listWords.length);
-                editor.commit();
+
+                if (commingFrom.equals("keply")) {
+                    editor.putStringSet("wrongLetters_l5",set);
+                    editor.putString("lvl5Deg",rightLetters.size()  + " / " + listWords.length);
+                    editor.commit();
+
+                } else if (commingFrom.equals("bo3dy")) {
+                    editor.putStringSet("words_wrong_l4_bo3dy", set);
+                    editor.putString("lvl4Deg_bo3dy", rightLetters.size() + " / " + listWords.length);
+                    editor.commit();
+
+                }
+
+
 
             }
             nextWord.setVisibility(View.GONE);

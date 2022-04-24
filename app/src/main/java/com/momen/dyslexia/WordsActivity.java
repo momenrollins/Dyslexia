@@ -35,11 +35,13 @@ public class WordsActivity extends AppCompatActivity {
     private EditText letter12;
     private EditText letter13;
     private Button nextWord;
-    String commingFrom="";
+    String commingFrom = "";
     String[] listWordsTest1 = {"ديك", "شجرة", "قطة", "تاج", "أرنب", "كرسي", "أسد", "شباك", "نجمة"};
-    String[] listWordsTest2 = {"بيت", "خبز", "شجرة", "أسد"};
-    int[] imagesTest1 = {R.drawable.deek, R.drawable.tree, R.drawable.cat, R.drawable.crown, R.drawable.rabbit, R.drawable.chair,R.drawable.lion, R.drawable.window, R.drawable.star};
-    int[] imagesTest2 = {R.drawable.house, R.drawable.bread, R.drawable.tree, R.drawable.lion};
+    int[] imagesTest1 = {R.drawable.deek, R.drawable.tree, R.drawable.cat, R.drawable.crown, R.drawable.rabbit, R.drawable.chair, R.drawable.lion, R.drawable.window, R.drawable.star};
+
+    String[] listWordsTest2 = {"بيت", "خبز", "شجرة", "أسد", "موز", "ظفر", "دمية", "كرة", "جمل", "قطار", "عربة", "عجلة"};
+    int[] imagesTest2 = {R.drawable.house, R.drawable.bread, R.drawable.tree, R.drawable.lion, R.drawable.banana,
+            R.drawable.fingernail, R.drawable.doll, R.drawable.football, R.drawable.s55, R.drawable.train, R.drawable.box_truck, R.drawable.s181};
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
     int index = 0;
@@ -55,28 +57,26 @@ public class WordsActivity extends AppCompatActivity {
         initView();
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-       commingFrom = getIntent().getStringExtra("commingFrom");
-        if (commingFrom.equals("keply")){
-            splitT3Letters(listWordsTest1,imagesTest1);
+        commingFrom = getIntent().getStringExtra("commingFrom");
+        if (commingFrom.equals("keply")) {
+            splitT3Letters(listWordsTest1, imagesTest1);
 
-        }else if (commingFrom.equals("bo3dy")){
-            splitT3Letters(listWordsTest2,imagesTest2);
+        } else if (commingFrom.equals("bo3dy")) {
+            splitT3Letters(listWordsTest2, imagesTest2);
 
         }
         nextWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (commingFrom.equals("keply")){
-                    nextStep(listWordsTest1,imagesTest1);
+                if (commingFrom.equals("keply")) {
+                    nextStep(listWordsTest1, imagesTest1);
 
-                }else if (commingFrom.equals("bo3dy")){
-                    nextStep(listWordsTest2,imagesTest2);
+                } else if (commingFrom.equals("bo3dy")) {
+                    nextStep(listWordsTest2, imagesTest2);
 
                 }
             }
-
-
 
 
         });
@@ -85,7 +85,7 @@ public class WordsActivity extends AppCompatActivity {
     }
 
 
-    public void nextStep(String[] listWords,int[]images){
+    public void nextStep(String[] listWords, int[] images) {
         if (listWords[index].length() == 3) {
             Log.d("TAG", "onClick: " + letter14.getText().toString() + letter12.getText().toString() + letter11.getText().toString());
             String _result = letter14.getText().toString() + letter12.getText().toString() + letter11.getText().toString();
@@ -120,11 +120,11 @@ public class WordsActivity extends AppCompatActivity {
 
 
         }
-        splitT3Letters(listWords,images);
+        splitT3Letters(listWords, images);
 
     }
 
-    public void splitT3Letters(String[]listWords,int[]images) {
+    public void splitT3Letters(String[] listWords, int[] images) {
         Log.d("TAG", "splitT3Letters: " + index);
         if (index >= listWords.length) {
             index = 0;
@@ -142,20 +142,20 @@ public class WordsActivity extends AppCompatActivity {
             if (wrongLetters.size() != 0) {
                 result.append(" الكلمات الخاطئة : \n ");
                 for (int x = 0; x < wrongLetters.size(); x++) {
-                    result.append(wrongLetters.get(x) + ",");
+                    result.append(wrongLetters.get(x) + ", ");
                 }
                 Set<String> set = new HashSet<String>();
                 set.addAll(wrongLetters);
 
 
-                if (commingFrom.equals("keply")){
-                    editor.putStringSet("words_wrong_l3",set);
-                    editor.putString("lvl3Deg",rightLetters.size()  + " / " + listWords.length);
+                if (commingFrom.equals("keply")) {
+                    editor.putStringSet("words_wrong_l3", set);
+                    editor.putString("lvl3Deg", rightLetters.size() + " / " + listWords.length);
                     editor.commit();
 
-                }else if (commingFrom.equals("bo3dy")){
-                    editor.putStringSet("words_wrong_l3_bo3dy",set);
-                    editor.putString("lvl3Deg_bo3dy",rightLetters.size()  + " / " + listWords.length);
+                } else if (commingFrom.equals("bo3dy")) {
+                    editor.putStringSet("words_wrong_l3_bo3dy", set);
+                    editor.putString("lvl3Deg_bo3dy", rightLetters.size() + " / " + listWords.length);
                     editor.commit();
 
                 }

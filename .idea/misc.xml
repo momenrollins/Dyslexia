@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_choose.xml" value="0.17074275362318841" />
-        <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/activity_write_words_aactivity.xml" value="0.11548913043478261" />
         <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/item_letters.xml" value="0.17074275362318841" />
         <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/item_level.xml" value="0.17074275362318841" />
         <entry key="..\:/FCI/ffff/Dyslexia/app/src/main/res/layout/level_1_item.xml" value="0.11548913043478261" />
@@ -24,6 +23,7 @@
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_pdfactivity.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_select_letter.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_words.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/activity_write_words_aactivity.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/item_letters.xml" value="0.20625" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/item_level.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Moamen/New folder/Dyslexia/app/src/main/res/layout/result_dialog.xml" value="0.23645833333333333" />

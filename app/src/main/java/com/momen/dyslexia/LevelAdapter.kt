@@ -51,7 +51,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                     Intent(
                         context,
                         WordsActivity::class.java
-                    ).putExtra("index", position).putExtra("commingFrom","keply")
+                    ).putExtra("index", position).putExtra("commingFrom", "keply")
                 )
                 else if (position == 3) context.startActivity(
                     Intent(
@@ -63,7 +63,7 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                     Intent(
                         context,
                         OrderWordsActivity::class.java
-                    ).putExtra("index", position).putExtra("commingFrom","keply")
+                    ).putExtra("index", position).putExtra("commingFrom", "keply")
 
                 ) else {
                     context.startActivity(
@@ -100,31 +100,28 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                             ChooseActivity::class.java
                         ).putExtra("comingFrom", "l0")
                     )
-                } else  if (position == 1) {
+                } else if (position == 1) {
                     context.startActivity(
                         Intent(
                             context,
                             ChooseActivity::class.java
                         ).putExtra("comingFrom", "l1")
                     )
-                }else  if (position == 2) {
+                } else if (position == 2) {
                     context.startActivity(
                         Intent(
                             context,
                             WordsActivity::class.java
-                        ).putExtra("index", position).putExtra("commingFrom","bo3dy")
+                        ).putExtra("index", position).putExtra("commingFrom", "bo3dy")
                     )
-                }else if (position == 3) {
+                } else if (position == 3) {
                     context.startActivity(
                         Intent(
                             context,
                             OrderWordsActivity::class.java
-                        ).putExtra("index", position).putExtra("commingFrom","bo3dy")
+                        ).putExtra("index", position).putExtra("commingFrom", "bo3dy")
                     )
-                }
-
-
-                else {
+                } else {
                     context.startActivity(
                         Intent(
                             context,

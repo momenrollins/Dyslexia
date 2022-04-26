@@ -20,9 +20,14 @@ import java.util.Set;
 
 public class OrderWordsActivity extends AppCompatActivity {
     String[] listWordsTest1 = {"يسبح السمك في الماء", "هذه سمكة صغيرة", "هي معلمة نشيطة", "هذا طير ازرق"};
-    String[] listWordsTest2 = {"هو ولد سعيد", "هو رجل قوى", "هذه وردة جميلة"};
+    String[] listWordsTest2 = {"هو ولد سعيد", "هو رجل قوي", "هذه وردة جميلة",
+            "سقى هاني زهور حديقته", "اكل سالم موزة", "يغسل ابي السيارة", "تسقي امي الازهار", "يقرأ عصام قصة جميلة", "يعالج الطبيب اسنان الطفل",};
+
     int[] imagesTest1 = {R.drawable.swim_fish, R.drawable.small_fish, R.drawable.active_teacher, R.drawable.blue_baird};
-    int[] imagesTest2 = {R.drawable.boy, R.drawable.strong_man, R.drawable.flower};
+
+    int[] imagesTest2 = {R.drawable.boy, R.drawable.strong_man, R.drawable.flower,
+            R.drawable.watering, R.drawable.eating_banana, R.drawable.car_wash, R.drawable.water_mother,
+            R.drawable.reading_story,R.drawable.dentist,};
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
     private LinearLayout linearLayout;
@@ -43,6 +48,7 @@ public class OrderWordsActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,15 +67,15 @@ public class OrderWordsActivity extends AppCompatActivity {
         nextWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] word ;
+                String[] word;
                 if (commingFrom.equals("keply")) {
                     word = listWordsTest1[index].split(" ");
-                    nextStep(listWordsTest1, imagesTest1,word);
+                    nextStep(listWordsTest1, imagesTest1, word);
 
                 } else if (commingFrom.equals("bo3dy")) {
                     word = listWordsTest2[index].split(" ");
 
-                    nextStep(listWordsTest2, imagesTest2,word);
+                    nextStep(listWordsTest2, imagesTest2, word);
 
                 }
 
@@ -79,7 +85,7 @@ public class OrderWordsActivity extends AppCompatActivity {
 
     }
 
-    public void  nextStep(String[] listWords, int[] images,String[] word){
+    public void nextStep(String[] listWords, int[] images, String[] word) {
         if (word.length == 3) {
             String _result = letter14.getText().toString().trim() + letter13.getText().toString().trim() + " " + letter12.getText().toString().trim() + " " + letter11.getText().toString().trim();
             Log.d("TAG", "onClick:result " + _result);
@@ -139,14 +145,14 @@ public class OrderWordsActivity extends AppCompatActivity {
             if (wrongLetters.size() != 0) {
                 result.append(" الكلمات الخاطئة : \n ");
                 for (int x = 0; x < wrongLetters.size(); x++) {
-                    result.append(wrongLetters.get(x) + ",");
+                    result.append(wrongLetters.get(x) + ", ");
                 }
                 Set<String> set = new HashSet<String>();
                 set.addAll(wrongLetters);
 
                 if (commingFrom.equals("keply")) {
-                    editor.putStringSet("wrongLetters_l5",set);
-                    editor.putString("lvl5Deg",rightLetters.size()  + " / " + listWords.length);
+                    editor.putStringSet("wrongLetters_l5", set);
+                    editor.putString("lvl5Deg", rightLetters.size() + " / " + listWords.length);
                     editor.commit();
 
                 } else if (commingFrom.equals("bo3dy")) {
@@ -155,7 +161,6 @@ public class OrderWordsActivity extends AppCompatActivity {
                     editor.commit();
 
                 }
-
 
 
             }

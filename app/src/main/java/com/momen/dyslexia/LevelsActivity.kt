@@ -46,7 +46,7 @@ class LevelsActivity : AppCompatActivity() {
             levels.add("التميز بين الحركات الضمة والفتحة والكسره")
             levels.add("القدرة على تكوين كلمة من حروف")
             levels.add("القدرة على تكوين جملة من كلمات")
-            levels.add("القدرة على كتابة قصة قصيره")
+            levels.add("القدرة على فهم وترتيب قصة قصيرة")
             levels.add("القدرة على الفهم القرائي")
             fab.visibility = GONE
         }

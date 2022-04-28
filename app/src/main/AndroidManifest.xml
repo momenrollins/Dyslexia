@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dyslexia">
         <activity
+            android:name=".ArrangeActivity"
+            android:exported="false" />
+        <activity
             android:name=".DisplayLettersVideos"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
@@ -19,7 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".LettersImages"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SelectLetter"
             android:exported="true" />

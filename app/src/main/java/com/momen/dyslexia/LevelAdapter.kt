@@ -121,6 +121,13 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                             OrderWordsActivity::class.java
                         ).putExtra("index", position).putExtra("commingFrom", "bo3dy")
                     )
+                }  else if (position == 4) {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            ArrangeActivity::class.java
+                        ).putExtra("index", position).putExtra("commingFrom", "bo3dy")
+                    )
                 } else {
                     context.startActivity(
                         Intent(

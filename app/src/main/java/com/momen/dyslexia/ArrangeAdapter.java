@@ -27,10 +27,12 @@ public class ArrangeAdapter extends RecyclerView.Adapter<ArrangeAdapter.ViewHold
     Context context;
     ArrangeModel arrangeModel;
     Boolean resetET = true;
+    ArrayList<String> ans;
 
-    public ArrangeAdapter(@NotNull Context context, @NotNull ArrangeModel arrangeModel) {
+    public ArrangeAdapter(@NotNull Context context, @NotNull ArrangeModel arrangeModel,ArrayList<String> ans) {
         this.context = context;
         this.arrangeModel = arrangeModel;
+        this.ans =ans;
     }
 
     @NonNull
@@ -50,6 +52,23 @@ public class ArrangeAdapter extends RecyclerView.Adapter<ArrangeAdapter.ViewHold
         if (resetET) {
             holder.numberEt.setText("");
         }
+        holder.numberEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                ans.set(position,charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override
@@ -59,6 +78,9 @@ public class ArrangeAdapter extends RecyclerView.Adapter<ArrangeAdapter.ViewHold
 
     public List<String> getNumbers() {
         return arrangeModel.getNumbers();
+    }
+    public ArrayList<String> getNumbersAns() {
+        return ans;
     }
 
     @Override
@@ -74,6 +96,8 @@ public class ArrangeAdapter extends RecyclerView.Adapter<ArrangeAdapter.ViewHold
     public void updateList(@NotNull ArrangeModel arrangeModel) {
         this.arrangeModel = arrangeModel;
         resetET=true;
+        ans.clear();
+        ans.addAll(arrangeModel.getNumbers());
         notifyDataSetChanged();
     }
 
@@ -90,6 +114,8 @@ public class ArrangeAdapter extends RecyclerView.Adapter<ArrangeAdapter.ViewHold
             itemIv = view.findViewById(R.id.item_iv);
             numberEt = view.findViewById(R.id.number_et);
 
+
         }
+
     }
 }

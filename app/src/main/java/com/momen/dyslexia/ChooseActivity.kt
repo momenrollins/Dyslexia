@@ -58,6 +58,12 @@ class ChooseActivity : AppCompatActivity() {
             paraText.visibility = GONE
             paraImg.visibility = VISIBLE
             fillFirstLettersL2()
+        } else if (comingFrom == "l6") {
+            paraText.visibility = VISIBLE
+            paraImg.visibility = GONE
+            paraText.text =
+                "جلس الأب في الغرفة بعد يوم عمل متعب، وقرأ جريدة. وبعد مرور وقت قصير، إكتشف عليّ أن أباه قد نام والجريدة في يده."
+            fillL6()
         } else {
             fillChoose()
         }
@@ -324,6 +330,89 @@ class ChooseActivity : AppCompatActivity() {
 
     }
 
+    private fun fillL6() {
+        choosesList.add(
+            ChooseModel(
+                "جلس الأب :",
+                "ا. على السرير",
+                "ب. في الغرفة",
+                "ت. فوق الطاولة",
+                "ث. على الكرسي ",
+                "ب. في الغرفة"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                " ماذا عمل الأب بعد أن عاد من العمل؟",
+                " أ. شاهد  (التليفزيون)",
+                "ب عمل عملا شاقا",
+                "ت. قرأ جريدة",
+                "ث. تعب",
+                "ت. قرأ جريدة"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "اكتشف علي أن أباه قد نام:",
+                "ا. بعد مرور وقت قصير",
+                "ب، بعد مرور وقت طويل",
+                "ت. بعد مرور ثلاث ساعات",
+                "ث. بعد مرور خمس ساعات",
+                "ا. بعد مرور وقت قصير"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "لماذا غلب النوم على الأب؟",
+                "أ. لأنه لم ينم في الليل",
+                "ب. لأن البرنامج كان مملة",
+                "ت. لأنه عمل عملا شاق ",
+                "ث. لأنه عمل عملا ممتع ",
+                "ت. لأنه عمل عملا شاق "
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "كلمة (جريدة) هي :-",
+                "أ. فعل مضارع",
+                "ب. فعل ماض",
+                "ت.اسم ",
+                "ث. حرف",
+                "ت.اسم "
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "الشخصية الرئيسة في النص :",
+                "عمار ",
+                "خالد",
+                "الام",
+                "القطار ",
+                "عمار "
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "دعا عمار صديقة خالدا:.",
+                "ليذاكر معه ",
+                "ليلعب معه",
+                "ليسافر معه",
+                "ليعمل معه",
+                "ليلعب معه"
+            )
+        )
+        choosesList.add(
+            ChooseModel(
+                "لعب عمار وخالد بـ :.",
+                "القطار",
+                "الكرة",
+                "السيارة",
+                "الطائرة",
+                "القطار"
+            )
+        )
+    }
+
 
     private fun fillArray(Q: String, ans1: String, ans2: String, ans3: String, realAns: String) {
         choosesList.add(
@@ -345,9 +434,14 @@ class ChooseActivity : AppCompatActivity() {
     private fun handleClick() {
         index++
 
-        if (index < choosesList.size)
+        if (index < choosesList.size) {
+            if (comingFrom == "l6" && index == 5)
+                paraText.text = "دعا عمار صديقه خالدا ليلعب معه بقطاره الجديد، و طلب منه أن يمسكه حتّى ينتهي من تركيب القضبان. لكنه سقط من يده فتكسر و تفككت اجزاؤه . غضب عمار وصرخ قائلا : ماذا فعلت بلعبتي ؟\n" +
+                        "أرميتها على الأرض لتكسرها ؟ رد خالد: لقد سقطت من يدي من غير قصد، وأرجو أن تسامحني . دخلت الأم وسألت عمارا عن سبب صراخه، فحكي لها ما حدث. ابتسمت الأم وقالت : يا بني، سأشتري لك قطارا جديدا، ولكن من أين أتي لك\n" +
+                        "بصديق كخالد ؟\n" +
+                        "ندم عمار على تسرعه، واعتذر إلى خالد، وراحا يلعبان معا .\n"
             showQuestion(choosesList[index], index)
-        else {
+        } else {
             paraTv.visibility = GONE
             ans1.visibility = GONE
             ans2.visibility = GONE

@@ -132,8 +132,8 @@ class LevelAdapter(var levelTextArray: ArrayList<String>, var context: Context) 
                     context.startActivity(
                         Intent(
                             context,
-                            LettersActivity::class.java
-                        ).putExtra("lvl", position)
+                            ChooseActivity::class.java
+                        ).putExtra("comingFrom", "l6")
                     )
                 }
 

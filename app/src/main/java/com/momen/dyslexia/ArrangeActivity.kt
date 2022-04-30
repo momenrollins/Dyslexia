@@ -86,7 +86,7 @@ class ArrangeActivity : AppCompatActivity() {
                 txt_view.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F);
 
                 result()
-                editor!!.putString("story", "النتيجة = ${count} من 6")
+                editor!!.putString("story", "${count} من 6")
                 editor!!.commit()
                 txt_view.text = " ${sharedPreferences!!.getString("story", "")}"
             }

@@ -37,7 +37,7 @@ class ArrangeActivity : AppCompatActivity() {
         R.drawable.story_tree_3,
         R.drawable.story_tree_4
     )
-    var numbers1 = arrayListOf("3", "1", "2", "4")
+    var numbers1 = arrayListOf("2", "1", "3", "4")
     var numbers2 = arrayListOf("2", "3", "1")
     var numbers3 = arrayListOf("3","1", "2",  "4")
     var numbers4 = arrayListOf("3","1", "2",  "4")
@@ -86,7 +86,7 @@ class ArrangeActivity : AppCompatActivity() {
                 txt_view.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F);
 
                 result()
-                editor!!.putString("story", "${count} من 6")
+                editor!!.putString("story", "${count} / 6")
                 editor!!.commit()
                 txt_view.text = " ${sharedPreferences!!.getString("story", "")}"
             }

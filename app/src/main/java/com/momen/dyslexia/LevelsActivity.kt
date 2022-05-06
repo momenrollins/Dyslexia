@@ -70,19 +70,19 @@ class LevelsActivity : AppCompatActivity() {
         dialog.getWindow()!!.setAttributes(lp)
         val dialogTxt: TextView = dialog.findViewById<TextView>(R.id.text_dialog)
         var set: Set<String> = HashSet()
-        var degree1=""
-        var degree2=""
-        var degree3=""
-        var degree4=""
-        var degree5=""
-        var degree6=""
-        if (levels.contains("التعرف على الحرف الاول والاوسط من الكلمة والتميز بين الحروف المتشابهه")){
-             degree1 = sharedPreferences!!.getString("lvl6Degl0", "--")!!
-             degree2 = sharedPreferences!!.getString("lvl6Degl1", "--")!!
-             degree3 = sharedPreferences!!.getString("lvl3Deg_bo3dy", "--")!!
-             degree4 = sharedPreferences!!.getString("lvl4Deg_bo3dy", "--")!!
-             degree5 = sharedPreferences!!.getString("story", "--")!!
-             degree6 = sharedPreferences!!.getString("lvl6Degl6", "--")!!
+        var degree1 = ""
+        var degree2 = ""
+        var degree3 = ""
+        var degree4 = ""
+        var degree5 = ""
+        var degree6 = ""
+        if (levels.contains("التعرف على الحرف الاول والاوسط من الكلمة والتميز بين الحروف المتشابهه")) {
+            degree1 = sharedPreferences!!.getString("lvl6Degl0", "--")!!
+            degree2 = sharedPreferences!!.getString("lvl6Degl1", "--")!!
+            degree3 = sharedPreferences!!.getString("lvl3Deg_bo3dy", "--")!!
+            degree4 = sharedPreferences!!.getString("lvl4Deg_bo3dy", "--")!!
+            degree5 = sharedPreferences!!.getString("story", "--")!!
+            degree6 = sharedPreferences!!.getString("lvl6Degl6", "--")!!
 
 
             dialogTxt.append("\nالمستوى الاول:")
@@ -137,14 +137,14 @@ class LevelsActivity : AppCompatActivity() {
             dialogTxt.append("\nالمستوى السادي:")
             dialogTxt.append("\nالدرجة: $degree6")
 
-        }else{
+        } else {
             set = sharedPreferences!!.getStringSet("wrongLetters", HashSet())!!
-             degree1 = sharedPreferences!!.getString("lvl1Deg", "--")!!
-             degree2 = sharedPreferences!!.getString("lvl2Deg", "--")!!
-             degree3 = sharedPreferences!!.getString("lvl3Deg", "--")!!
-             degree4 = sharedPreferences!!.getString("lvl4Deg", "--")!!
-             degree5 = sharedPreferences!!.getString("lvl5Deg", "--")!!
-             degree6 = sharedPreferences!!.getString("lvl6Deg", "--")!!
+            degree1 = sharedPreferences!!.getString("lvl1Deg", "--")!!
+            degree2 = sharedPreferences!!.getString("lvl2Deg", "--")!!
+            degree3 = sharedPreferences!!.getString("lvl3Deg", "--")!!
+            degree4 = sharedPreferences!!.getString("lvl4Deg", "--")!!
+            degree5 = sharedPreferences!!.getString("lvl5Deg", "--")!!
+            degree6 = sharedPreferences!!.getString("lvl6Deg", "--")!!
 
             dialogTxt.append("\nالمستوى الاول:")
             dialogTxt.append("\nالدرجة: $degree1")
@@ -223,12 +223,6 @@ class LevelsActivity : AppCompatActivity() {
             dialogTxt.append("\nالمستوى السادي:")
             dialogTxt.append("\nالدرجة: $degree6")
         }
-
-
-
-
-
-
 
 
         val dialogButton: Button = dialog.findViewById(R.id.btn_dialog) as Button

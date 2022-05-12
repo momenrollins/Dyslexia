@@ -3,6 +3,7 @@
     package="com.momen.dyslexia">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -42,7 +43,8 @@
             android:exported="false" />
         <activity
             android:name=".LevelsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Level1Activity"
             android:exported="false" />

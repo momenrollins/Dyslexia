@@ -40,8 +40,8 @@ public class WordsActivity extends AppCompatActivity {
     int[] imagesTest1 = {R.drawable.deek, R.drawable.tree, R.drawable.cat, R.drawable.crown, R.drawable.rabbit, R.drawable.chair, R.drawable.lion, R.drawable.window, R.drawable.star};
 
     String[] listWordsTest2 = {"بيت", "خبز", "شجرة", "أسد", "موز", "ظفر", "دمية", "كرة", "جمل", "قطار", "عربة", "عجلة"};
-    int[] imagesTest2 = {R.drawable.house, R.drawable.bread, R.drawable.tree, R.drawable.lion, R.drawable.lion,
-            R.drawable.fingernail, R.drawable.lion, R.drawable.football, R.drawable.s55, R.drawable.lion, R.drawable.lion, R.drawable.s181};
+    int[] imagesTest2 = {R.drawable.house, R.drawable.bread, R.drawable.tree, R.drawable.lion, R.drawable.banana,
+            R.drawable.fingernail, R.drawable.doll, R.drawable.football, R.drawable.s55, R.drawable.train, R.drawable.box_truck, R.drawable.s181};
     ArrayList<String> wrongLetters = new ArrayList();
     ArrayList<String> rightLetters = new ArrayList();
     int index = 0;

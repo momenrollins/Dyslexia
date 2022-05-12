@@ -27,6 +27,7 @@ import java.util.Set;
 public class LettersRecord extends AppCompatActivity {
 
     private TextView mText;
+    private TextView qText;
     private TextView mText2;
     private ImageView iv_mic;
     private ImageView iv_word;
@@ -55,6 +56,7 @@ public class LettersRecord extends AppCompatActivity {
         iv_mic = findViewById(R.id.btn_speak);
         iv_word = findViewById(R.id.iv_word);
         mText = findViewById(R.id.textView1);
+        qText = findViewById(R.id.q_tv);
         mText2 = findViewById(R.id.textView2);
         iv_word.setImageResource(images[index]);
         result = (Button) findViewById(R.id.result);
@@ -85,7 +87,10 @@ public class LettersRecord extends AppCompatActivity {
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next.setVisibility(View.VISIBLE);
+                iv_mic.setVisibility(View.INVISIBLE);
+                iv_word.setVisibility(View.INVISIBLE);
+                qText.setVisibility(View.INVISIBLE);
+                next.setVisibility(View.INVISIBLE);
                 result.setVisibility(View.INVISIBLE);
                 result();
             }

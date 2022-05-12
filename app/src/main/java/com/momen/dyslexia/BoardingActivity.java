@@ -82,9 +82,9 @@ public class BoardingActivity extends AppCompatActivity {
             }
         }
         if (index == onboardingAdapter.getItemCount() - 1) {
-            buttonOnboardingAction.setText("Start");
+            buttonOnboardingAction.setText("البدأ");
         } else {
-            buttonOnboardingAction.setText("Next");
+            buttonOnboardingAction.setText("التالي");
         }
     }
 

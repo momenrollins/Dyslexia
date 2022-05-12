@@ -56,7 +56,10 @@ class LevelsActivity : AppCompatActivity() {
         level_recycler.setAdapter(LevelAdapter(levels, this))
     }
 
+
     private fun openDialog() {
+        var degree = 0
+        var total = 0
         val dialog = Dialog(this)
         dialog.setTitle("النتائج")
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -86,7 +89,12 @@ class LevelsActivity : AppCompatActivity() {
 
 
             dialogTxt.append("\nالمستوى الاول:")
-            dialogTxt.append("\nالدرجة: $degree1")
+            dialogTxt.append("\n $degree1")
+            if (degree1.contains(" / ")) {
+                val x = degree1.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             if (set.isNotEmpty()) {
 
                 dialogTxt.append("\n الكلمات الخاطئة")
@@ -101,14 +109,22 @@ class LevelsActivity : AppCompatActivity() {
 
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الثانى:")
-            dialogTxt.append("\nالدرجة: $degree2")
-
+            dialogTxt.append("\n $degree2")
+            if (degree2.contains(" / ")) {
+                val x = degree2.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             set = sharedPreferences!!.getStringSet("words_wrong_l3_bo3dy", HashSet())!!
 
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الثالث:")
-            dialogTxt.append("\nالدرجة: $degree3")
-
+            dialogTxt.append("\n $degree3")
+            if (degree3.contains(" / ")) {
+                val x = degree3.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             if (set.isNotEmpty()) {
                 dialogTxt.append("\n الكلمات الخاطئة: ")
 
@@ -120,8 +136,12 @@ class LevelsActivity : AppCompatActivity() {
             set = sharedPreferences!!.getStringSet("words_wrong_l4_bo3dy", HashSet())!!
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الرابع:")
-            dialogTxt.append("\nالدرجة: $degree4")
-
+            dialogTxt.append("\n $degree4")
+            if (degree4.contains(" / ")) {
+                val x = degree4.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             if (set.isNotEmpty()) {
                 dialogTxt.append("\n الكلمات الخاطئة: ")
 
@@ -131,12 +151,24 @@ class LevelsActivity : AppCompatActivity() {
             }
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الخامس:")
-            dialogTxt.append("\nالدرجة: $degree5")
-
+            dialogTxt.append("\n $degree5")
+            if (degree5.contains(" / ")) {
+                val x = degree5.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             dialogTxt.append("\n==========================")
-            dialogTxt.append("\nالمستوى السادي:")
-            dialogTxt.append("\nالدرجة: $degree6")
 
+            dialogTxt.append("\nالمستوى السادس:")
+            dialogTxt.append("\n $degree6")
+            if (degree6.contains(" / ")) {
+                val x = degree6.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
+            dialogTxt.append("\n==========================")
+            dialogTxt.append("\nالمجموع الكلي:")
+            dialogTxt.append("\n$degree / $total")
         } else {
             set = sharedPreferences!!.getStringSet("wrongLetters", HashSet())!!
             degree1 = sharedPreferences!!.getString("lvl1Deg", "--")!!
@@ -144,10 +176,16 @@ class LevelsActivity : AppCompatActivity() {
             degree3 = sharedPreferences!!.getString("lvl3Deg", "--")!!
             degree4 = sharedPreferences!!.getString("lvl4Deg", "--")!!
             degree5 = sharedPreferences!!.getString("lvl5Deg", "--")!!
-            degree6 = sharedPreferences!!.getString("lvl6Deg", "--")!!
+
+            degree6 = sharedPreferences!!.getString("lvl6Deg1", "--")!!
 
             dialogTxt.append("\nالمستوى الاول:")
-            dialogTxt.append("\nالدرجة: $degree1")
+            dialogTxt.append("\n $degree1")
+            if (degree1.contains(" / ")) {
+                val x = degree1.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             if (set.isNotEmpty()) {
 
                 dialogTxt.append("\n الكلمات الخاطئة")
@@ -160,8 +198,12 @@ class LevelsActivity : AppCompatActivity() {
             }
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الثانى:")
-            dialogTxt.append("\nالدرجة: $degree2")
-
+            dialogTxt.append("\n $degree2")
+            if (degree2.contains(" / ")) {
+                val x = degree2.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             set = sharedPreferences!!.getStringSet("wrong_words_l2", HashSet())!!
             if (set.isNotEmpty()) {
                 dialogTxt.append("\n الكلمات الخاطئة: ")
@@ -179,8 +221,12 @@ class LevelsActivity : AppCompatActivity() {
 
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الثالث:")
-            dialogTxt.append("\nالدرجة: $degree3")
-
+            dialogTxt.append("\n $degree3")
+            if (degree3.contains(" / ")) {
+                val x = degree3.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             if (set.isNotEmpty()) {
                 dialogTxt.append("\n الكلمات الخاطئة: ")
 
@@ -191,8 +237,12 @@ class LevelsActivity : AppCompatActivity() {
 
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الرابع:")
-            dialogTxt.append("\nالدرجة: $degree4")
-
+            dialogTxt.append("\n $degree4")
+            if (degree4.contains(" / ")) {
+                val x = degree4.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             set = sharedPreferences!!.getStringSet("selectFLettersWrong", HashSet())!!
             if (set.isNotEmpty()) {
                 dialogTxt.append("\n الكلمات الخاطئة: ")
@@ -206,8 +256,12 @@ class LevelsActivity : AppCompatActivity() {
             }
             dialogTxt.append("\n==========================")
             dialogTxt.append("\nالمستوى الخامس:")
-            dialogTxt.append("\nالدرجة: $degree5")
-
+            dialogTxt.append("\n $degree5")
+            if (degree5.contains(" / ")) {
+                val x = degree5.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
             set = sharedPreferences!!.getStringSet("wrongLetters_l5", HashSet())!!
             if (set.isNotEmpty()) {
                 dialogTxt.append("\n الكلمات الخاطئة: ")
@@ -220,8 +274,16 @@ class LevelsActivity : AppCompatActivity() {
 
             }
             dialogTxt.append("\n==========================")
-            dialogTxt.append("\nالمستوى السادي:")
-            dialogTxt.append("\nالدرجة: $degree6")
+            dialogTxt.append("\nالمستوى السادس:")
+            dialogTxt.append("\n $degree6")
+            if (degree6.contains(" / ")) {
+                val x = degree6.split(" / ")
+                degree += x[0].toInt()
+                total += x[1].toInt()
+            }
+            dialogTxt.append("\n==========================")
+            dialogTxt.append("\nالمجموع الكلي:")
+            dialogTxt.append("\n$degree / $total")
         }
 
 

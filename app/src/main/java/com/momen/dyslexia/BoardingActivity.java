@@ -109,6 +109,7 @@ public class BoardingActivity extends AppCompatActivity {
                 "4- اختبار dynaread\n" +
                 "5- اختبار Bristol");
         onBoardingItems.add(firstBoardingItem);
+        onBoardingItems.add(firstBoardingItem);
         onBoardingItems.add(secondBoardingItem);
         onBoardingItems.add(thirdBoardingItem);
         onboardingAdapter = new OnboardingAdapter(onBoardingItems);

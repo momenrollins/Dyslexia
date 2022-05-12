@@ -158,6 +158,7 @@ class LevelsActivity : AppCompatActivity() {
                 total += x[1].toInt()
             }
             dialogTxt.append("\n==========================")
+
             dialogTxt.append("\nالمستوى السادس:")
             dialogTxt.append("\n $degree6")
             if (degree6.contains(" / ")) {
@@ -175,6 +176,7 @@ class LevelsActivity : AppCompatActivity() {
             degree3 = sharedPreferences!!.getString("lvl3Deg", "--")!!
             degree4 = sharedPreferences!!.getString("lvl4Deg", "--")!!
             degree5 = sharedPreferences!!.getString("lvl5Deg", "--")!!
+
             degree6 = sharedPreferences!!.getString("lvl6Deg1", "--")!!
 
             dialogTxt.append("\nالمستوى الاول:")

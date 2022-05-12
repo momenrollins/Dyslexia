@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,8 +31,11 @@ public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.On
 
     @Override
     public void onBindViewHolder(@NonNull OnboardingViewHolder holder, int position) {
-
-        holder.setOnBoardingData(onBoardingItems.get(position), position);
+        if (position != 0) {
+            holder.linearLayout1.setVisibility(View.GONE);
+            holder.linearLayout2.setVisibility(View.VISIBLE);
+            holder.setOnBoardingData(onBoardingItems.get(position), position);
+        }
 
 
     }
@@ -45,6 +49,7 @@ public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.On
         TextView textTitle;
         TextView textDescription;
         ImageView vector;
+        LinearLayout linearLayout1,linearLayout2;
 
         OnboardingViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,13 +57,15 @@ public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.On
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDesc);
             vector = itemView.findViewById(R.id.vector);
+            linearLayout1 = itemView.findViewById(R.id.linear_1);
+            linearLayout2 = itemView.findViewById(R.id.linear_2);
         }
 
         void setOnBoardingData(OnBoardingItem onBoardingItem, int position) {
 
             textTitle.setText(onBoardingItem.getTitle());
             textDescription.setText(onBoardingItem.getDescription());
-            if (position == 0) {
+            if (position == 1) {
                 vector.setVisibility(View.VISIBLE);
                 textDescription.setVisibility(View.GONE);
             } else {
